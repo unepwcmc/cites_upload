@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  file_type: 1
+  report_id: 1
+
+two:
+  file_type: 1
+  report_id: 1
+# == Schema Information
+#
+# Table name: uploaded_files
+#
+#  id         :integer         not null, primary key
+#  file_type  :integer
+#  report_id  :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+

@@ -3,6 +3,8 @@ class Report < ActiveRecord::Base
 
   include EnumerateIt
   has_enumeration_for :basis, :with => CompilationBasis, :create_helpers => true
+
+  has_many :uploaded_files
 end
 # == Schema Information
 #
