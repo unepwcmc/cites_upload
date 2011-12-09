@@ -1,0 +1,41 @@
+<%= form_for(@report) do |f| %>
+  <% if @report.errors.any? %>
+    <div class="alert-message block-message error">
+      <p><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</p>
+
+      <ul>
+      <% @report.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="clearfix">
+    <%= f.label :country %>
+    <div class="input">
+      <%= f.text_field :country %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= f.label :year %>
+    <div class="input">
+      <%= f.number_field :year %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= f.label :basis %>
+    <div class="input">
+      <%= f.number_field :basis %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= f.label :contact_details %>
+    <div class="input">
+      <%= f.text_field :contact_details %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/ctran/annotate_models.git
+  revision: a709a87dc08c5c3cee31ece0e698c4cbea400b31
+  specs:
+    annotate (2.4.1.beta1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -31,7 +37,11 @@ GEM
       multi_json (~> 1.0)
     ansi (1.4.1)
     arel (2.2.1)
+    bootstrap-generators (1.0.1)
+      railties (~> 3.0)
     builder (3.0.0)
+    enumerate_it (0.7.10)
+      activesupport (>= 2.3.2)
     erubis (2.7.0)
     execjs (1.2.12)
       multi_json (~> 1.0)
@@ -99,6 +109,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate!
+  bootstrap-generators
+  enumerate_it
   jquery-rails
   pg
   rails (= 3.1.3)

@@ -1,0 +1,32 @@
+<div class="page-header">
+  <%= link_to 'New Report', new_report_path, :class => 'btn primary' %>
+  <h1>Listing reports</h1>
+</div>
+
+<table class="zebra-striped">
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>Year</th>
+      <th>Basis</th>
+      <th>Contact details</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @reports.each do |report| %>
+    <tr>
+      <td><%= report.country %></td>
+      <td><%= report.year %></td>
+      <td><%= report.basis %></td>
+      <td><%= report.contact_details %></td>
+      <td><%= link_to 'Show', report %></td>
+      <td><%= link_to 'Edit', edit_report_path(report) %></td>
+      <td><%= link_to 'Destroy', report, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

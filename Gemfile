@@ -6,7 +6,7 @@ gem 'rails', '3.1.3'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-
+gem 'enumerate_it'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,4 +31,9 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', '~> 0.8.3', :require => false
+end
+
+group :development do
+  gem 'bootstrap-generators'
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 end

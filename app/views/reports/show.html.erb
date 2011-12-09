@@ -1,0 +1,20 @@
+<div class="page-header">
+  <%= link_to 'Back', reports_path, :class => 'btn' %>
+  <%= link_to 'Edit', edit_report_path(@report), :class => 'btn primary' %>
+  <h1>Listing reports</h1>
+</div>
+
+<dl>
+  <dt>Country:</dt>
+  <dd><%= @report.country %></dd>
+
+  <dt>Year:</dt>
+  <dd><%= @report.year %></dd>
+
+  <dt>Basis:</dt>
+  <dd><%= @report.basis %></dd>
+
+  <dt>Contact details:</dt>
+  <dd><%= @report.contact_details %></dd>
+
+</dl>
