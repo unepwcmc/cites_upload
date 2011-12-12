@@ -22,3 +22,12 @@ function add_fields(link, association, content, div_class) {
   var regexp = new RegExp("new_" + association, "g")
   $("div."+div_class).append(content.replace(regexp, new_id));
 }
+$(document).ready(function(){
+  $("input[type=radio]").change(function(){
+    if(this.value == "true"){
+      $(this).parents('.clearfix').next().show('slow');
+    } else{
+      $(this).parents('.clearfix').next().hide('slow');
+    }
+  });
+});
