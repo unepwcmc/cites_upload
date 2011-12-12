@@ -16,5 +16,7 @@ end
 #  contact_details :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
+#  has_exports     :boolean
+#  has_imports     :boolean
 #
 
