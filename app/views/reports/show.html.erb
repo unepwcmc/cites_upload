@@ -1,6 +1,6 @@
 <div class="page-header">
   <%= link_to 'Back', reports_path, :class => 'btn' %>
-  <%= link_to 'Edit', edit_report_path(@report), :class => 'btn primary' %>
+  <%= link_to 'Edit', edit_report_path(@report), :class => 'btn success' %>
   <h1>Listing reports</h1>
 </div>
 
@@ -12,9 +12,9 @@
   <dd><%= @report.year %></dd>
 
   <dt>Basis:</dt>
-  <dd><%= @report.basis %></dd>
+  <dd><%= @report.basis_humanize %></dd>
 
   <dt>Contact details:</dt>
   <dd><%= @report.contact_details %></dd>
-
 </dl>
+
