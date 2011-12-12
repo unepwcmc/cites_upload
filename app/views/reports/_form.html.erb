@@ -1,41 +1,95 @@
-<%= form_for @report do |f| %>
+<%= form_for @report, :html => {:class => "form-stacked"} do |f| %>
   <% if @report.errors.any? %>
     <div class="alert-message block-message error">
       <p><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</p>
 
       <ul>
-      <% @report.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @report.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="clearfix">
-    <%= f.label :country %>
-    <div class="input">
-      <%= f.select :country, Countries::LIST_OF_COUNTRIES %>
+  <fieldset>
+    <legend>Report Details</legend>
+    <div class="alert-message block-message success">
+      <p>This facility provides to the CITES Authorities a way of uploading their annual reports to the CITES Secretariat directly.</p>
     </div>
-  </div>
-  <div class="clearfix">
-    <%= f.label :year, "What year does the annual report cover?" %>
-    <div class="input">
-      <%= f.select :year, options_for_select((10.years.ago.year..2.years.from_now.year).to_a, :selected => f.object.year.presence||Date.today.year) %>
+    <div class="clearfix">
+      <%= f.label :country %>
+      <div class="input">
+        <%= f.select :country, Countries::LIST_OF_COUNTRIES %>
+      </div>
     </div>
-  </div>
-  <div class="clearfix">
-    <%= f.label :basis, "On what basis was the annual report to CITES compiled?" %>
-    <div class="input">
-      <%= f.select :basis, CompilationBasis.to_a %>
+    <div class="clearfix">
+      <%= f.label :year, "What year does the annual report cover?" %>
+      <div class="input">
+        <%= f.select :year, options_for_select((10.years.ago.year..2.years.from_now.year).to_a, :selected => f.object.year.presence||Date.today.year) %>
+      </div>
     </div>
-  </div>
-  <div class="clearfix">
-    <%= f.label :contact_details, "For questions about the report, who should be contacted?" %>
-    <div class="input">
-      <%= f.text_field :contact_details %>
+    <div class="clearfix">
+      <%= f.label :basis, "On what basis was the annual report to CITES compiled?" %>
+      <div class="input">
+        <%= f.select :basis, CompilationBasis.to_a %>
+      </div>
     </div>
-  </div>
+    <div class="clearfix">
+      <%= f.label :contact_details, "For questions about the report, who should be contacted?" %>
+      <div class="input">
+        <%= f.text_field :contact_details %>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Upload Files</legend>
+    <div class="alert-message block-message success">
+      <p>
+      Please upload the annual report files for submission to CITES. The preferred format is Excel or csv with the report formatted
+      as shown in the examples provided. Please use the appropriate codes for countries, trade terms, purpose and source as specified
+      within the <em>Guidelines for the preparation of the annual reports to CITES</em>.
+      </p>
+    </div>
+    <ul class="tabs">
+      <li><a href="#export">Exports</a></li>
+      <li><a href="#import">Imports</a></li>
+      <li><a href="#information">Additional Information</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="export" class="active">
+        <div class="clearfix">
+          <%= f.label :has_exports, "Do you have Exports and Re-exports to upload?" %>
+          <div class="input">
+            <%= f.check_box :has_exports %>
+          </div>
+        </div>
+        <div class='inset' id="uploaded_exports">
+          <div class="uploaded_exports">
+            <%= f.fields_for :uploaded_exports do |file_form| %>
+              <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
+            <% end %>
+          </div>
+          <%= link_to_add_fields "Add another file", f, :uploaded_exports, FileTypes::EXPORT %><br />
+        </div>
+      </div>
+      <div id="import">
+        <div class="clearfix">
+          <%= f.label :has_imports, "Do you have Imports to upload?" %>
+          <div class="input">
+            <%= f.check_box :has_imports %>
+          </div>
+        </div>
+        <div class='inset' id="uploaded_imports">
+          <div class="uploaded_imports">
+            <%= f.fields_for :uploaded_imports do |file_form| %>
+              <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
+            <% end %>
+          </div>
+          <%= link_to_add_fields "Add another file", f, :uploaded_imports, FileTypes::IMPORT %><br />
+        </div>
+      </div>
+    </div>
+  </fieldset>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", :class => "btn success" %>
   </div>
 <% end %>

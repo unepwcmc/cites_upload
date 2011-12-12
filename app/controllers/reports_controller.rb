@@ -26,6 +26,10 @@ class ReportsController < ApplicationController
   def new
     @report = Report.new
 
+    @report.uploaded_exports.build(:file_type => FileTypes::EXPORT)
+    @report.uploaded_imports.build(:file_type => FileTypes::IMPORT)
+    @report.uploaded_informations.build(:file_type => FileTypes::INFORMATION)
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @report }

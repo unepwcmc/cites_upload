@@ -1,10 +1,15 @@
 class Report < ActiveRecord::Base
-  attr_accessible :country, :year, :basis, :contact_details
+  attr_accessible :country, :year, :basis, :contact_details, :has_exports, :has_imports
 
   include EnumerateIt
   has_enumeration_for :basis, :with => CompilationBasis, :create_helpers => true
 
-  has_many :uploaded_files
+  has_many :uploaded_exports, :class_name => "UploadedFile", :conditions => "file_type = #{FileTypes::EXPORT}"
+  has_many :uploaded_imports, :class_name => "UploadedFile", :conditions => "file_type = #{FileTypes::IMPORT}"
+  has_many :uploaded_informations, :class_name => "UploadedFile", :conditions => "file_type = #{FileTypes::INFORMATION}"
+  accepts_nested_attributes_for :uploaded_exports, :allow_destroy => true
+  accepts_nested_attributes_for :uploaded_imports, :allow_destroy => true
+  accepts_nested_attributes_for :uploaded_informations, :allow_destroy => true
 end
 # == Schema Information
 #
