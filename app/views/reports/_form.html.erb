@@ -24,7 +24,7 @@
     <div class="clearfix">
       <%= f.label :year, "What year does the annual report cover?" %>
       <div class="input">
-        <%= f.select :year, options_for_select((10.years.ago.year..2.years.from_now.year).to_a, :selected => f.object.year.presence||Date.today.year) %>
+        <%= f.select :year, options_for_select((6.years.ago.year..1.years.ago.year).to_a.reverse, :selected => f.object.year.presence||1.year.ago.year) %>
       </div>
     </div>
     <div class="clearfix">
@@ -49,8 +49,8 @@
       within the <em>Guidelines for the preparation of the annual reports to CITES</em>.
       </p>
     </div>
-    <ul class="tabs">
-      <li><a href="#export">Exports</a></li>
+    <ul class="tabs" data-tabs="tabs">
+      <li class="active"><a href="#export">Exports</a></li>
       <li><a href="#import">Imports</a></li>
       <li><a href="#information">Additional Information</a></li>
     </ul>
@@ -59,7 +59,8 @@
         <div class="clearfix">
           <%= f.label :has_exports, "Do you have Exports and Re-exports to upload?" %>
           <div class="input">
-            <%= f.check_box :has_exports %>
+            <label for="report_has_exports_true" class="inline">Yes</label> <%= f.radio_button :has_exports, true %><br />
+            <label for="report_has_exports_false" class="inline">No</label> <%= f.radio_button :has_exports, false %>
           </div>
         </div>
         <div class='inset' id="uploaded_exports">
@@ -68,14 +69,15 @@
               <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
             <% end %>
           </div>
-          <%= link_to_add_fields "Add another file", f, :uploaded_exports, FileTypes::EXPORT %><br />
+          <%= link_to_add_fields "Add file", f, :uploaded_exports, FileTypes::EXPORT %><br />
         </div>
       </div>
       <div id="import">
         <div class="clearfix">
           <%= f.label :has_imports, "Do you have Imports to upload?" %>
           <div class="input">
-            <%= f.check_box :has_imports %>
+            <label for="report_has_imports_true" class="inline">Yes</label> <%= f.radio_button :has_imports, true %><br />
+            <label for="report_has_imports_false" class="inline">No</label> <%= f.radio_button :has_imports, false %>
           </div>
         </div>
         <div class='inset' id="uploaded_imports">
@@ -84,7 +86,24 @@
               <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
             <% end %>
           </div>
-          <%= link_to_add_fields "Add another file", f, :uploaded_imports, FileTypes::IMPORT %><br />
+          <%= link_to_add_fields "Add file", f, :uploaded_imports, FileTypes::IMPORT %><br />
+        </div>
+      </div>
+      <div id="information">
+        <div class="clearfix">
+          <%= f.label :has_additional_information, "Do you have additional documents to upload?" %>
+          <div class="input">
+            <label for="report_has_additional_information_true" class="inline">Yes</label> <%= f.radio_button :has_additional_information, true %><br />
+            <label for="report_has_additional_information_false" class="inline">No</label> <%= f.radio_button :has_additional_information, false %>
+          </div>
+        </div>
+        <div class='inset' id="uploaded_informations">
+          <div class="uploaded_informations">
+            <%= f.fields_for :uploaded_informations do |file_form| %>
+              <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
+            <% end %>
+          </div>
+          <%= link_to_add_fields "Add file", f, :uploaded_informations, FileTypes::INFORMATION %><br />
         </div>
       </div>
     </div>

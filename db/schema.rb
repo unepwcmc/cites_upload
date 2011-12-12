@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111212112207) do
+ActiveRecord::Schema.define(:version => 20111212161807) do
 
   create_table "reports", :force => true do |t|
     t.string   "country"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20111212112207) do
     t.datetime "updated_at"
     t.boolean  "has_exports"
     t.boolean  "has_imports"
+    t.boolean  "has_additional_information"
   end
 
   create_table "uploaded_files", :force => true do |t|
