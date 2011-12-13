@@ -17,11 +17,12 @@ function remove_fields(link) {
   $(link).closest(".fields").hide();
 }
 
-function add_fields(link, association, content, div_class) {
+function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g")
-  $("div."+div_class).append(content.replace(regexp, new_id));
+  $("div."+association).append(content.replace(regexp, new_id));
 }
+
 $(document).ready(function(){
   $("input[type=radio]").change(function(){
     if(this.value == "true"){

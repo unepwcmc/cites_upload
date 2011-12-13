@@ -63,7 +63,7 @@
             <label for="report_has_exports_false" class="inline">No</label> <%= f.radio_button :has_exports, false %>
           </div>
         </div>
-        <div class='inset hide' id="uploaded_exports">
+        <div class='inset <%= f.object.has_exports? ? "" : "hide"%>' id="uploaded_exports">
           <div class="uploaded_exports">
             <%= f.fields_for :uploaded_exports do |file_form| %>
               <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
@@ -80,7 +80,7 @@
             <label for="report_has_imports_false" class="inline">No</label> <%= f.radio_button :has_imports, false %>
           </div>
         </div>
-        <div class='inset hide' id="uploaded_imports">
+        <div class='inset <%= f.object.has_imports? ? "" : "hide"%>' id="uploaded_imports">
           <div class="uploaded_imports">
             <%= f.fields_for :uploaded_imports do |file_form| %>
               <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
@@ -97,7 +97,7 @@
             <label for="report_has_additional_information_false" class="inline">No</label> <%= f.radio_button :has_additional_information, false %>
           </div>
         </div>
-        <div class='inset hide' id="uploaded_informations">
+        <div class='inset <%= f.object.has_additional_information? ? "" : "hide"%>' id="uploaded_informations">
           <div class="uploaded_informations">
             <%= f.fields_for :uploaded_informations do |file_form| %>
               <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
@@ -112,5 +112,3 @@
     <%= f.submit "Submit", :class => "btn success" %>
   </div>
 <% end %>
-<script type="text/javascript">
-</script>

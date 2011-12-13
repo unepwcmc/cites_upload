@@ -1,7 +1,7 @@
 <div class="page-header">
   <%= link_to 'Back', reports_path, :class => 'btn' %>
   <%= link_to 'Edit', edit_report_path(@report), :class => 'btn success' %>
-  <h1>Listing reports</h1>
+  <h1>Report</h1>
 </div>
 
 <dl>
@@ -18,3 +18,35 @@
   <dd><%= @report.contact_details %></dd>
 </dl>
 
+<p><strong>Exports</strong></p>
+<% if @report.has_exports? %>
+  <ul>
+    <% @report.uploaded_exports.each do |file| %>
+      <li><%= link_to file.document_file_name, file.document.url %></li>
+    <% end %>
+  </ul>
+<% else %>
+  You said you had no exports.
+<% end %>
+
+<p><strong>Imports</strong></p>
+<% if @report.has_imports? %>
+  <ul>
+    <% @report.uploaded_imports.each do |file| %>
+      <li><%= link_to file.document_file_name, file.document.url %></li>
+    <% end %>
+  </ul>
+<% else %>
+  You said you had no imports.
+<% end %>
+
+<p><strong>Additional Information</strong></p>
+<% if @report.has_additional_information? %>
+  <ul>
+    <% @report.uploaded_additional_informations.each do |file| %>
+      <li><%= link_to file.document_file_name, file.document.url %></li>
+    <% end %>
+  </ul>
+<% else %>
+  You said you had no additional informations.
+<% end %>

@@ -19,3 +19,8 @@ a:hover {
   font-weight: normal;
   width: 25px;
 }
+
+fieldset{
+  border: 1px solid #eee;
+  padding: 25px;
+}

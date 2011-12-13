@@ -1,5 +1,5 @@
 class UploadedFile < ActiveRecord::Base
-  attr_accessible :file_type, :report_id, :document_file_name, :document_content_type, :document_file_size, :document_updated_at
+  attr_accessible :file_type, :report_id, :document
 
   include EnumerateIt
   has_enumeration_for :file_type, :with => FileTypes, :create_helpers => true
