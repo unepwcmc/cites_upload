@@ -1,0 +1,30 @@
+<div id="confirm_submission" class="modal fade">
+  <div class="modal-header">
+    <h3>Report Submission</h3>
+  </div>
+  <div class="modal-body">
+    <p>You are trying to submit a report with the following details:</p>
+    <dl>
+      <dt><%=t('reports.show.country')%>:</dt>
+      <dd id='confirm_country'></dd>
+
+      <dt><%=t('reports.show.year')%>:</dt>
+      <dd id='confirm_year'></dd>
+
+      <dt><%=t('reports.show.basis')%>:</dt>
+      <dd id='confirm_basis'></dd>
+
+      <dt><%=t('reports.show.contact_details')%>:</dt>
+      <dd id='confirm_contact_details'></dd>
+    </dl>
+    <p><strong>Exports</strong></p>
+    <ul id="confirm_exports"></ul>
+    <p><strong>Imports</strong></p>
+    <ul id="confirm_imports"></ul>
+    <p><strong>Additional Information</strong></p>
+    <ul id="confirm_additional_information"></ul>
+  </div>
+  <div class="modal-footer">
+    <%= link_to "Cancel", "#", :class => "btn danger", :id => "cancel" %><%= link_to "Submit", "#", :class => "btn success", :id => "do_submit"%>
+  </div>
+</div>

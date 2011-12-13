@@ -40,6 +40,8 @@
       </div>
     </div>
   </fieldset>
+
+  <!-- Upload part of the form is below this comment -->
   <fieldset id="files_upload_section">
     <legend><%= t('reports.form.upload_header') %></legend>
     <div class="alert-message block-message success">
@@ -109,6 +111,9 @@
     <%= f.submit submit_button, :class => "btn success" %>
   </div>
 <% end %>
+<%= render "confirm_submission" %>
 <script type="text/javascript">
-  enableDisplayingSelectedFile("<%= t('reports.form.file_chosen') %>");
+  $(function(){
+      enableDisplayingSelectedFile("<%= t('reports.form.file_chosen') %>");
+  });
 </script>
