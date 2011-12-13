@@ -4,7 +4,10 @@ class UploadedFile < ActiveRecord::Base
   include EnumerateIt
   has_enumeration_for :file_type, :with => FileTypes, :create_helpers => true
 
-  has_attached_file :document
+  has_attached_file :document,
+    :storage => :s3,
+    :s3_credentials => "#{Rails.root}/config/s3_storage.yml",
+    :bucket => "cites_uploaded_annual_reports"
   validates_attachment_size :document, :less_than => 10.megabytes if :document
   validates_attachment_content_type :document, :content_type => ['text/csv', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'] if :document
 
