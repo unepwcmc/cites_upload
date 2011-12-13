@@ -60,12 +60,12 @@
           </div>
         </div>
         <div class='inset <%= f.object.has_exports? ? "" : "hide"%>' id="uploaded_exports">
+          <%= link_to_add_fields t('reports.form.add_file'), f, :uploaded_exports, FileTypes::EXPORT %><br />
           <div class="uploaded_exports">
             <%= f.fields_for :uploaded_exports do |file_form| %>
               <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
             <% end %>
           </div>
-          <%= link_to_add_fields "Add file", f, :uploaded_exports, FileTypes::EXPORT %><br />
         </div>
       </div>
       <div id="import">
@@ -77,12 +77,12 @@
           </div>
         </div>
         <div class='inset <%= f.object.has_imports? ? "" : "hide"%>' id="uploaded_imports">
+          <%= link_to_add_fields t('reports.form.add_file'), f, :uploaded_imports, FileTypes::IMPORT %><br />
           <div class="uploaded_imports">
             <%= f.fields_for :uploaded_imports do |file_form| %>
               <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
             <% end %>
           </div>
-          <%= link_to_add_fields "Add file", f, :uploaded_imports, FileTypes::IMPORT %><br />
         </div>
       </div>
       <div id="information">
@@ -94,12 +94,12 @@
           </div>
         </div>
         <div class='inset <%= f.object.has_additional_information? ? "" : "hide"%>' id="uploaded_informations">
+          <%= link_to_add_fields t('reports.form.add_file'), f, :uploaded_informations, FileTypes::INFORMATION %><br />
           <div class="uploaded_informations">
             <%= f.fields_for :uploaded_informations do |file_form| %>
               <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
             <% end %>
           </div>
-          <%= link_to_add_fields t('reports.form.add_file'), f, :uploaded_informations, FileTypes::INFORMATION %><br />
         </div>
       </div>
     </div>

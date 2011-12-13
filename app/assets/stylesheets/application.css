@@ -24,3 +24,12 @@ fieldset{
   border: 1px solid #eee;
   padding: 25px;
 }
+
+.clear{
+  clear: both;
+  margin: 0;
+}
+
+.btn.add_file{
+  float: right;
+}

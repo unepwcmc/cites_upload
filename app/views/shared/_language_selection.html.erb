@@ -1,19 +1,19 @@
-<p style="float: right">
-<% if !params[:locale].present? || params[:locale] == "en" %>
-  English
-<% else %>
-  <%= link_to "English", url_for(:locale => :en)%>
-<% end %>
-|
-<% if params[:locale].present? && params[:locale] == "fr" %>
-  Français
-<% else %>
-  <%= link_to "Français", url_for(:locale => :fr) %>
-<% end %>
-|
-<% if params[:locale].present? && params[:locale] == "es" %>
-  Español
-<% else %>
-  <%= link_to "Español", url_for(:locale => :es) %>
-<% end %>
+<p style="float: right;">
+  <% if !params[:locale].present? || params[:locale] == "en" %>
+    English
+  <% else %>
+    <%= link_to "English", url_for(:locale => :en)%>
+  <% end %>
+  |
+  <% if params[:locale].present? && params[:locale] == "fr" %>
+    Français
+  <% else %>
+    <%= link_to "Français", url_for(:locale => :fr) %>
+  <% end %>
+  |
+  <% if params[:locale].present? && params[:locale] == "es" %>
+    Español
+  <% else %>
+    <%= link_to "Español", url_for(:locale => :es) %>
+  <% end %>
 </p>

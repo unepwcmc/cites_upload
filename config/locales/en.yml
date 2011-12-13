@@ -35,7 +35,7 @@ en:
       has_exports: "Do you have Exports and Re-exports to upload?"
       has_imports: "Do you have Imports to upload?"
       has_additional_information: "Do you have additional documents to upload?"
-      add_file: "Add file"
+      add_file: "Add another file"
       submit: "Submit"
     show:
       back: "Back"
