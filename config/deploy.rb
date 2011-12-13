@@ -80,4 +80,4 @@ task :generate_s3_storage do
   buffer = ERB.new(template).result(binding)
   put buffer, "#{shared_path}/config/s3_storage.yml"
 end
-after "deploy:setup", :generate_rails_admin
+after "deploy:setup", :generate_s3_storage
