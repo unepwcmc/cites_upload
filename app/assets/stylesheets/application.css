@@ -33,3 +33,13 @@ fieldset{
 .btn.add_file{
   float: right;
 }
+
+fieldset#files_upload_section{
+  font-size: 16px;
+}
+fieldset#files_upload_section label{
+  font-size: 14px;
+}
+fieldset#files_upload_section p{
+  font-size: 14px;
+}
