@@ -109,3 +109,13 @@
     <%= f.submit submit_button, :class => "btn success" %>
   </div>
 <% end %>
+<script type="text/javascript">
+  $("div#export, div#import, div#information").delegate('input.upload_file', 'change', function(){
+      if($(this).val()!==""){
+        $(this).parent().nextAll('span').html("<%= t('reports.form.file_chosen') %>: <em>"+$(this).val()+"</em>");
+        $(this).parent().nextAll('span').show('slow');
+      } else{
+        $(this).parent().nextAll('span').hide('slow');
+      }
+  });
+</script>

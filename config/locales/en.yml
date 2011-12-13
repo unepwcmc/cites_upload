@@ -37,6 +37,7 @@ en:
       has_additional_information: "Do you have additional documents to upload?"
       add_file: "Add another file"
       submit: "Submit"
+      file_chosen: "File chosen"
     show:
       back: "Back"
       edit: "Edit"
