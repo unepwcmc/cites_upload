@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @reports }
+      format.json { render :json => @reports }
     end
   end
 
@@ -17,7 +17,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @report }
+      format.json { render :json => @report }
     end
   end
 
@@ -32,7 +32,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @report }
+      format.json { render :json => @report }
     end
   end
 
@@ -48,11 +48,11 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.save
-        format.html { redirect_to @report, notice: 'Report was successfully created.' }
-        format.json { render json: @report, status: :created, location: @report }
+        format.html { redirect_to @report, :notice => 'Report was successfully created.' }
+        format.json { render :json => @report, :status => :created, :location => @report }
       else
-        format.html { render action: "new" }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @report.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -64,11 +64,11 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.update_attributes(params[:report])
-        format.html { redirect_to @report, notice: 'Report was successfully updated.' }
+        format.html { redirect_to @report, :notice => 'Report was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @report.errors, :status => :unprocessable_entity }
       end
     end
   end
