@@ -4,10 +4,6 @@ fr:
     compilation_basis:
       trade: "Comércio"
       permits: "Licensas"
-    file_types:
-      export: "Exportacion"
-      import: "Importacion"
-      information: "Informacion"
   generic:
     word_yes: "Yes"
     word_no: "No"

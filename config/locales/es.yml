@@ -6,10 +6,6 @@ es:
     compilation_basis:
       trade: Comércio
       permits: Licensas
-    file_types:
-      export: Exportacion
-      import: Importacion
-      information: Informacion
   generic:
     word_yes: Si
     word_no: "No"
