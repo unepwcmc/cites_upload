@@ -168,7 +168,7 @@ PLATFORMS
 DEPENDENCIES
   annotate!
   aws-s3
-  bootstrap-generators
+  bootstrap-generators (~> 1.0.1)
   brightbox
   capistrano
   capistrano-ext

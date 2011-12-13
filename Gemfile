@@ -40,7 +40,7 @@ group :test do
 end
 
 group :development do
-  gem 'bootstrap-generators'
+  gem 'bootstrap-generators', '~>1.0.1'
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
   gem 'ruby-debug19'
 end
