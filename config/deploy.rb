@@ -10,6 +10,7 @@ load 'deploy/assets'
 # The name of your application.  Used for deployment directory and filenames
 # and Apache configs. Should be unique on the Brightbox
 set :application, "cites_upload"
+set :rake, "bundle exec rake"
 
 
 # Target directory for the application on the web and app servers.
