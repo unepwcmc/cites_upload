@@ -23,6 +23,17 @@ function add_fields(link, association, content) {
   $("div."+association).append(content.replace(regexp, new_id));
 }
 
+function enableDisplayingSelectedFile(translatedText){
+  $("div#export, div#import, div#information").delegate('input.upload_file', 'change', function(){
+      if($(this).val()!==""){
+        $(this).parent().nextAll('span').html(translatedText+": <em>"+$(this).val()+"</em>");
+        $(this).parent().nextAll('span').show('slow');
+      } else{
+        $(this).parent().nextAll('span').hide('slow');
+      }
+  });
+}
+
 $(document).ready(function(){
   $("input[type=radio]").change(function(){
     if(this.value == "true"){
