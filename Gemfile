@@ -17,7 +17,7 @@ end
 
 gem 'jquery-rails'
 gem 'rails-i18n'
-gem 'tolk'
+gem 'tolk', :git => 'git://github.com/panva/tolk.git', :branch => 'master'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

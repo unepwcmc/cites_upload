@@ -1,4 +1,5 @@
 CitesUpload::Application.routes.draw do
+  mount Tolk::Engine => "/tolk"
   scope "(:locale)", :locale => /en|fr|es/ do
     resources :reports
   end
