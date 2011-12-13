@@ -2,13 +2,13 @@
   <span>
     <%= f.hidden_field :file_type %>
     <% if f.object.new_record? %>
-      <%= f.label :document %>
+      <%= f.label :document, t('uploaded_files.document') %>
       <%= f.file_field :document, :class => "xxlarge" %>
     <% else %>
-      <label>file</label>
+      <label><%= t('uploaded_files.file') %></label>
       <%= link_to f.object.document_file_name, f.object.document.url %>
     <% end %>
   </span>
-  <%= link_to_remove_fields "remove", f %>
+  <%= link_to_remove_fields t('uploaded_files.remove'), f %>
 </div>
 

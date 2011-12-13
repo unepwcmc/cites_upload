@@ -1,10 +1,17 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
-  hello: "Hello world"
+
+es:
+  hello: "Hola Mundo"
+  enumerations:
+    compilation_basis:
+      trade: Comércio
+      permits: Licensas
+    file_types:
+      export: Exportacion
+      import: Importacion
+      information: Informacion
   generic:
-    word_yes: "Yes"
+    word_yes: Si
     word_no: "No"
   layout:
     home: "Home"

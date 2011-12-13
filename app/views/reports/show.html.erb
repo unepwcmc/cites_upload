@@ -1,24 +1,24 @@
 <div class="page-header">
-  <%= link_to 'Back', reports_path, :class => 'btn' %>
-  <%= link_to 'Edit', edit_report_path(@report), :class => 'btn success' %>
+  <%= link_to t('reports.show.back'), reports_path, :class => 'btn' %>
+  <%= link_to t('reports.show.edit'), edit_report_path(@report), :class => 'btn success' %>
   <h1>Report</h1>
 </div>
 
 <dl>
-  <dt>Country:</dt>
+  <dt><%=t('reports.show.country')%>:</dt>
   <dd><%= @report.country %></dd>
 
-  <dt>Year:</dt>
+  <dt><%=t('reports.show.year')%>:</dt>
   <dd><%= @report.year %></dd>
 
-  <dt>Basis:</dt>
+  <dt><%=t('reports.show.basis')%>:</dt>
   <dd><%= @report.basis_humanize %></dd>
 
-  <dt>Contact details:</dt>
+  <dt><%=t('reports.show.contact_details')%>:</dt>
   <dd><%= @report.contact_details %></dd>
 </dl>
 
-<p><strong>Exports</strong></p>
+<p><strong><%=t('reports.show.exports')%></strong></p>
 <% if @report.has_exports? %>
   <ul>
     <% @report.uploaded_exports.each do |file| %>
@@ -26,10 +26,10 @@
     <% end %>
   </ul>
 <% else %>
-  You said you had no exports.
+  <%=t('reports.show.no_exports')%>
 <% end %>
 
-<p><strong>Imports</strong></p>
+<p><strong><%=t('reports.show.imports')%></strong></p>
 <% if @report.has_imports? %>
   <ul>
     <% @report.uploaded_imports.each do |file| %>
@@ -37,10 +37,10 @@
     <% end %>
   </ul>
 <% else %>
-  You said you had no imports.
+  <%=t('reports.show.no_imports')%>
 <% end %>
 
-<p><strong>Additional Information</strong></p>
+<p><strong><%=t('reports.show.additional_information')%></strong></p>
 <% if @report.has_additional_information? %>
   <ul>
     <% @report.uploaded_additional_informations.each do |file| %>
@@ -48,5 +48,5 @@
     <% end %>
   </ul>
 <% else %>
-  You said you had no additional informations.
+  <%=t('reports.show.additional_information')%>
 <% end %>

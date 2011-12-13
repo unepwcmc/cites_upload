@@ -11,56 +11,52 @@
     </div>
   <% end %>
   <fieldset>
-    <legend>Report Details</legend>
+    <legend><%= t('reports.form.details_header')%></legend>
     <div class="alert-message block-message success">
-      <p>This facility provides to the CITES Authorities a way of uploading their annual reports to the CITES Secretariat directly.</p>
+      <p><%= t('reports.form.details_message')%></p>
     </div>
     <div class="clearfix">
-      <%= f.label :country %>
+      <%= f.label :country, t('reports.form.country') %>
       <div class="input">
         <%= f.select :country, Countries::LIST_OF_COUNTRIES %>
       </div>
     </div>
     <div class="clearfix">
-      <%= f.label :year, "What year does the annual report cover?" %>
+      <%= f.label :year, t('reports.form.year') %>
       <div class="input">
         <%= f.select :year, options_for_select((6.years.ago.year..1.years.ago.year).to_a.reverse, :selected => f.object.year.presence||1.year.ago.year) %>
       </div>
     </div>
     <div class="clearfix">
-      <%= f.label :basis, "On what basis was the annual report to CITES compiled?" %>
+      <%= f.label :basis, t('reports.form.basis') %>
       <div class="input">
         <%= f.select :basis, CompilationBasis.to_a %>
       </div>
     </div>
     <div class="clearfix">
-      <%= f.label :contact_details, "For questions about the report, who should be contacted?" %>
+      <%= f.label :contact_details, t('reports.form.contact_details') %>
       <div class="input">
         <%= f.text_field :contact_details %>
       </div>
     </div>
   </fieldset>
   <fieldset>
-    <legend>Upload Files</legend>
+    <legend><%= t('reports.form.upload_header') %></legend>
     <div class="alert-message block-message success">
-      <p>
-      Please upload the annual report files for submission to CITES. The preferred format is Excel or csv with the report formatted
-      as shown in the examples provided. Please use the appropriate codes for countries, trade terms, purpose and source as specified
-      within the <em>Guidelines for the preparation of the annual reports to CITES</em>.
-      </p>
+      <p><%= t('reports.form.upload_message', :guidelines_url => "#").html_safe %></p>
     </div>
     <ul class="tabs" data-tabs="tabs">
-      <li class="active"><a href="#export">Exports</a></li>
-      <li><a href="#import">Imports</a></li>
-      <li><a href="#information">Additional Information</a></li>
+      <li class="active"><a href="#export"><%= t('reports.form.tab_exports') %></a></li>
+      <li><a href="#import"><%= t('reports.form.tab_imports') %></a></li>
+      <li><a href="#information"><%= t('reports.form.information') %></a></li>
     </ul>
     <div class="tab-content">
       <div id="export" class="active">
         <div class="clearfix">
-          <%= f.label :has_exports, "Do you have Exports and Re-exports to upload?" %>
+          <%= f.label :has_exports, t('reports.form.has_exports') %>
           <div class="input">
-            <label for="report_has_exports_true" class="inline">Yes</label> <%= f.radio_button :has_exports, true %><br />
-            <label for="report_has_exports_false" class="inline">No</label> <%= f.radio_button :has_exports, false %>
+            <label for="report_has_exports_true" class="inline"><%= t('generic.word_yes') %></label> <%= f.radio_button :has_exports, true %><br />
+            <label for="report_has_exports_false" class="inline"><%= t('generic.word_no') %></label> <%= f.radio_button :has_exports, false %>
           </div>
         </div>
         <div class='inset <%= f.object.has_exports? ? "" : "hide"%>' id="uploaded_exports">
@@ -74,10 +70,10 @@
       </div>
       <div id="import">
         <div class="clearfix">
-          <%= f.label :has_imports, "Do you have Imports to upload?" %>
+          <%= f.label :has_imports, t('reports.form.has_imports') %>
           <div class="input">
-            <label for="report_has_imports_true" class="inline">Yes</label> <%= f.radio_button :has_imports, true %><br />
-            <label for="report_has_imports_false" class="inline">No</label> <%= f.radio_button :has_imports, false %>
+            <label for="report_has_imports_true" class="inline"><%= t('generic.word_yes') %></label> <%= f.radio_button :has_imports, true %><br />
+            <label for="report_has_imports_false" class="inline"><%= t('generic.word_no') %></label> <%= f.radio_button :has_imports, false %>
           </div>
         </div>
         <div class='inset <%= f.object.has_imports? ? "" : "hide"%>' id="uploaded_imports">
@@ -91,10 +87,10 @@
       </div>
       <div id="information">
         <div class="clearfix">
-          <%= f.label :has_additional_information, "Do you have additional documents to upload?" %>
+          <%= f.label :has_additional_information, t('reports.form.has_additional_information') %>
           <div class="input">
-            <label for="report_has_additional_information_true" class="inline">Yes</label> <%= f.radio_button :has_additional_information, true %><br />
-            <label for="report_has_additional_information_false" class="inline">No</label> <%= f.radio_button :has_additional_information, false %>
+            <label for="report_has_additional_information_true" class="inline"><%= t('generic.word_yes') %></label> <%= f.radio_button :has_additional_information, true %><br />
+            <label for="report_has_additional_information_false" class="inline"><%= t('generic.word_no') %></label> <%= f.radio_button :has_additional_information, false %>
           </div>
         </div>
         <div class='inset <%= f.object.has_additional_information? ? "" : "hide"%>' id="uploaded_informations">
@@ -103,12 +99,13 @@
               <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
             <% end %>
           </div>
-          <%= link_to_add_fields "Add file", f, :uploaded_informations, FileTypes::INFORMATION %><br />
+          <%= link_to_add_fields t('reports.form.add_file'), f, :uploaded_informations, FileTypes::INFORMATION %><br />
         </div>
       </div>
     </div>
   </fieldset>
   <div class="actions">
-    <%= f.submit "Submit", :class => "btn success" %>
+    <% submit_button = t('reports.form.submit') %>
+    <%= f.submit submit_button, :class => "btn success" %>
   </div>
 <% end %>
