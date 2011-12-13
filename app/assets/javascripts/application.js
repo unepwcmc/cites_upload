@@ -27,8 +27,19 @@ $(document).ready(function(){
   $("input[type=radio]").change(function(){
     if(this.value == "true"){
       $(this).parents('.clearfix').next().show('slow');
+      //change the documents that were marked to be removed by the user interaction with Yes or No question.
+      $(this).parents('.clearfix').next().find('.to_be_removed').each(function(){
+        $(this).val("0").removeClass("to_be_removed");
+      });
     } else{
       $(this).parents('.clearfix').next().hide('slow');
+      //Mark all the documents of this type to be destroyed, unless they are already marked for destruction.
+      $(this).parents('.clearfix').next().find("input[type=hidden]").each(function(){
+        if($(this).val() != "1"){
+          $(this).addClass("to_be_removed");
+          $(this).val("1");
+        }
+      });
     }
   });
 });

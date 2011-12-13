@@ -5,6 +5,8 @@ class UploadedFile < ActiveRecord::Base
   has_enumeration_for :file_type, :with => FileTypes, :create_helpers => true
 
   has_attached_file :document
+  validates_attachment_size :document, :less_than => 10.megabytes if :document
+  validates_attachment_content_type :document, :content_type => ['text/csv', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'] if :document
 
   belongs_to :report
 end

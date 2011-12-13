@@ -7,9 +7,9 @@ class Report < ActiveRecord::Base
   has_many :uploaded_exports, :class_name => "UploadedFile", :conditions => "file_type = #{FileTypes::EXPORT}"
   has_many :uploaded_imports, :class_name => "UploadedFile", :conditions => "file_type = #{FileTypes::IMPORT}"
   has_many :uploaded_informations, :class_name => "UploadedFile", :conditions => "file_type = #{FileTypes::INFORMATION}"
-  accepts_nested_attributes_for :uploaded_exports, :allow_destroy => true
-  accepts_nested_attributes_for :uploaded_imports, :allow_destroy => true
-  accepts_nested_attributes_for :uploaded_informations, :allow_destroy => true
+  accepts_nested_attributes_for :uploaded_exports, :allow_destroy => true, :reject_if => proc {|attributes| attributes['document'].blank?}
+  accepts_nested_attributes_for :uploaded_imports, :allow_destroy => true, :reject_if => proc {|attributes| attributes['document'].blank?}
+  accepts_nested_attributes_for :uploaded_informations, :allow_destroy => true, :reject_if => proc {|attributes| attributes['document'].blank?}
 end
 # == Schema Information
 #
