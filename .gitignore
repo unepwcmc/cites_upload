@@ -21,3 +21,4 @@
 /vendor/ruby
 /nbproject/*
 /public/system/*
+/config/s3_storage.yml
