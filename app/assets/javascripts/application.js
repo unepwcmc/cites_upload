@@ -7,7 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require_self
 
 $(document).ready(function(){
   $("input[type=radio]").change(function(){
