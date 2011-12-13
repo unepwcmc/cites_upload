@@ -8,6 +8,7 @@ gem 'rails', '3.1.3'
 gem 'pg'
 gem 'enumerate_it'
 gem 'paperclip', '~> 2.4'
+gem 'aws-s3'
 
 # Gems used only for assets and not required
 # in production environments by default.
