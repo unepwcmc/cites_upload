@@ -19,7 +19,7 @@
         <td><%= country.country %></td>
         <% (@min_year..@max_year).each do |year| %>
           <% report = Report.where(:year => year, :country => country).first %>
-          <td><%= report.try(:created_at) %></td>
+          <td><%= report.try(:created_at)||"n/a" %></td>
         <% end %>
       </tr>
     <% end %>
