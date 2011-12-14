@@ -30,6 +30,10 @@ fieldset{
   margin: 0;
 }
 
+.hide{
+  display:none;
+}
+
 .btn.add_file{
   float: right;
 }
@@ -42,4 +46,8 @@ fieldset#files_upload_section label{
 }
 fieldset#files_upload_section p{
   font-size: 14px;
+}
+
+ul.tabs > li.active > a {
+  color: orange;
 }

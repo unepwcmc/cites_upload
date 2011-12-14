@@ -7,6 +7,9 @@
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest(".fields").hide();
+  if($(link).parents('.inset').find('.fields:visible').length === 0){
+    $(link).parents('.inset').find('.add_file').removeClass('hide');
+  }
 }
 
 function add_fields(link, association, content) {
@@ -20,6 +23,9 @@ function enableDisplayingSelectedFile(translatedText){
       if($(this).val()!==""){
         $(this).parent().nextAll('span').html(translatedText+": <em>"+$(this).val()+"</em>");
         $(this).parent().nextAll('span').show('slow');
+        if($(this).parent().parent().parent().prevAll('.add_file').hasClass('hide')){
+          $(this).parent().parent().parent().prevAll('.add_file').removeClass('hide');
+        }
       } else{
         $(this).parent().nextAll('span').hide('slow');
       }
