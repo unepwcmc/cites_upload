@@ -51,10 +51,10 @@ function confirmSubmission(){
 }
 
 function fillInModalDetails(){
-  $("#confirm_country").html($("#report_country").val());
-  $("#confirm_year").html($("#report_year").val());
-  $("#confirm_basis").html($("#report_basis").text());
-  $("#confirm_contact_details").html($("#report_contact_details").text());
+  $("#confirm_country").html($("#report_country option:selected").text());
+  $("#confirm_year").html($("#report_year option:selected").text());
+  $("#confirm_basis").html($("#report_basis option:selected").text());
+  $("#confirm_contact_details").html($("#report_contact_details").val());
   $("#confirm_exports").empty();
   if($("#report_has_exports_false").is(':checked')){
     $("#confirm_exports").append("<li>You said that there are no exports</li>");
