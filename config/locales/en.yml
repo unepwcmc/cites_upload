@@ -52,6 +52,6 @@ en:
       additional_information: "Additional Information"
       no_additional_information: "You said you had no additional informations."
   uploaded_files:
-    document: "Document"
+    document: "Please select a file to upload"
     remove: "Remove"
     file: "File"
