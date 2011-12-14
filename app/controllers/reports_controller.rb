@@ -2,8 +2,9 @@ class ReportsController < ApplicationController
   # GET /reports
   # GET /reports.json
   def index
-    @reports = Report.all
-
+    @countries = Report.select('distinct country')
+    @min_year = Report.minimum('year')
+    @max_year = Report.maximum('year')
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @reports }
