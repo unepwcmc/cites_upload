@@ -60,7 +60,7 @@ function fillInModalDetails(){
     $("#confirm_exports").append("<li>You said that there are no exports</li>");
   }else{
     $("#uploaded_exports").find('.upload_file').each(function(){
-      if($(this).is(':visible')){
+      if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
         $("#confirm_exports").append("<li>"+$(this).val()+"</li>");
       }
     });
@@ -73,7 +73,7 @@ function fillInModalDetails(){
     $("#confirm_imports").append("<li>You said that there are no imports</li>");
   }else{
     $("#uploaded_imports").find('.upload_file').each(function(){
-      if($(this).is(':visible')){
+      if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
         $("#confirm_imports").append("<li>"+$(this).val()+"</li>");
       }
     });
@@ -86,7 +86,7 @@ function fillInModalDetails(){
     $("#confirm_additional_information").append("<li>You said that there is no additional information</li>");
   }else{
     $("#uploaded_information").find('.upload_file').each(function(){
-      if($(this).is(':visible')){
+      if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
         $("#confirm_additional_information").append("<li>"+$(this).val()+"</li>");
       }
     });
