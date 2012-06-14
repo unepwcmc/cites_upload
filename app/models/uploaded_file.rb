@@ -9,11 +9,6 @@ class UploadedFile < ActiveRecord::Base
     :s3_credentials => "#{Rails.root}/config/s3_storage.yml",
     :bucket => "cites_uploaded_annual_reports"
   validates_attachment_size :document, :less_than => 10.megabytes if :document
-  validates_attachment_content_type :document,
-    :content_type => ['text/csv', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel', 'application/x-msexcel',
-                      'application/ms-excel','application/msexcel', 'application/x-excel', 'application/x-dos_ms_excel', 'application/msword',
-                      'application/x-dos_ms_word', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ] if :document
-
   belongs_to :report
 end
 # == Schema Information
