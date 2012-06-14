@@ -1,9 +1,11 @@
 class Report < ActiveRecord::Base
-  attr_accessible :country, :year, :basis, :contact_details, :has_exports, :has_imports, :uploaded_exports_attributes, :uploaded_imports_attributes, :has_additional_information, :uploaded_informations_attributes
+  attr_accessible :country, :year, :basis, :contact_details, :has_exports, :has_imports, :uploaded_exports_attributes,
+                  :uploaded_imports_attributes, :has_additional_information, :uploaded_informations_attributes, :user_id
 
   include EnumerateIt
   has_enumeration_for :basis, :with => CompilationBasis, :create_helpers => true
 
+  belongs_to :user
   has_many :uploaded_exports, :class_name => "UploadedFile", :conditions => "file_type = #{FileTypes::EXPORT}"
   has_many :uploaded_imports, :class_name => "UploadedFile", :conditions => "file_type = #{FileTypes::IMPORT}"
   has_many :uploaded_informations, :class_name => "UploadedFile", :conditions => "file_type = #{FileTypes::INFORMATION}"

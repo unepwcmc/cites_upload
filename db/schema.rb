@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614094948) do
+ActiveRecord::Schema.define(:version => 20120614103114) do
 
   create_table "reports", :force => true do |t|
     t.string   "country"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20120614094948) do
     t.boolean  "has_exports"
     t.boolean  "has_imports"
     t.boolean  "has_additional_information"
+    t.integer  "user_id"
   end
 
   create_table "tolk_locales", :force => true do |t|
