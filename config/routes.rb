@@ -1,4 +1,6 @@
 CitesUpload::Application.routes.draw do
+  devise_for :admins
+
   devise_for :users
 
   mount Tolk::Engine => "/tolk"
