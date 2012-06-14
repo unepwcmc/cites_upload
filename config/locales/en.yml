@@ -12,10 +12,13 @@ en:
     word_no: "No"
   layout:
     home: "Home"
+    reports: "Reports"
     about: "About"
     contact: "Contact"
     title: "CITES Annual Report Upload Facility"
   reports:
+    index:
+      header: "Annual report submissions"
     new:
       header: "Annual Report Upload"
     form:

@@ -21,9 +21,8 @@
       <div class="container">
         <%= link_to t("layout.title"), root_url, :class => "brand" %>
         <ul class="nav">
-          <li class="active"><a href="/"><%= t("layout.home") %></a></li>
-          <li><a href="#about"><%= t("layout.about") %></a></li>
-          <li><a href="#contact"><%= t("layout.contact") %></a></li>
+          <li class="<%= controller.action_name == "new" ? "active" : ""%>"><a href="/"><%= t("layout.home") %></a></li>
+          <li class="<%= controller.action_name == "index" ? "active" : ""%>"><%= link_to t("layout.reports"), reports_path %></li>
         </ul>
       </div>
     </div>

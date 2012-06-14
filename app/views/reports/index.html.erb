@@ -1,12 +1,11 @@
 <div class="page-header">
-  <h1>Listing reports</h1>
+  <h1><%= t('reports.index.header') %></h1>
 </div>
 
 <table class="zebra-striped">
   <thead>
     <tr>
       <th>Country</th>
-      <th>Entry into force</th>
       <% (@min_year..@max_year).each do |year| %>
         <th><%= year %></th>
       <% end %>
