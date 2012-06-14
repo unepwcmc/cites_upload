@@ -6,12 +6,16 @@ class ReportsController < ApplicationController
   # GET /reports
   # GET /reports.json
   def index
-    @countries = Report.select('distinct country')
-    @min_year = Report.minimum('year')||6.year.ago.year
-    @max_year = Report.maximum('year')||1.year.ago.year
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @reports }
+    if current_admin
+      @users = User.order(:name)
+      @min_year = Report.minimum('year')||6.year.ago.year
+      @max_year = Report.maximum('year')||1.year.ago.year
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render :json => @reports }
+      end
+    elsif current_user
+      #redirect user to user page
     end
   end
 

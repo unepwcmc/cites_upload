@@ -6,6 +6,7 @@ CitesUpload::Application.routes.draw do
   mount Tolk::Engine => "/tolk"
   scope "(:locale)", :locale => /en|fr|es/ do
     resources :reports
+    resources :users
   end
 
   # You can have the root of your site routed with "root"

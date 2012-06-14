@@ -8,7 +8,7 @@
 <table class="zebra-striped">
   <thead>
     <tr>
-      <th>Country</th>
+      <th>Party</th>
       <% (@min_year..@max_year).each do |year| %>
         <th><%= year %></th>
       <% end %>
@@ -16,12 +16,12 @@
   </thead>
 
   <tbody>
-    <% @countries.each do |country| %>
+    <% @users.each do |user| %>
       <tr>
-        <td><%= country.country %></td>
+        <td><%= link_to user.country, user %></td>
         <% (@min_year..@max_year).each do |year| %>
-          <% report = Report.where(:year => year, :country => country).first %>
-          <td><%= report.try(:created_at)||"n/a" %></td>
+          <% report = user.reports.where(:year => year).first %>
+          <td><%= report ? link_to(report.created_at.year, report) : "n/a" %></td>
         <% end %>
       </tr>
     <% end %>
