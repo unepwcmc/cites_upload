@@ -24,7 +24,7 @@ en:
       header: "Annual Report Upload"
     form:
       details_header: "Report Details"
-      details_message: "This facility provides to the CITES Authorities a way of uploading their annual reports to the CITES Secretariat directly."
+      details_message: "The CITES Annual Report Upload Facility provides a way for CITES Parties to submit their CITES annual reports directly to the CITES Secretariat in fulfilment of their annual reporting obligations. CITES Parties can upload information on imports, exports and re-exports, as well as additional information relating to the trade in specimens of species included in Appendices I, II and III. Once uploaded, Parties can also access their annual reports via this system."
       year: "What year does the annual report cover?"
       basis: "On what basis was the annual report to CITES compiled?"
       contact_details: "For questions about the report, who should be contacted?"

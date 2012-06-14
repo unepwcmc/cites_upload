@@ -51,3 +51,8 @@ fieldset#files_upload_section p{
 ul.tabs > li.active > a {
   color: orange;
 }
+
+span.footer_logo {
+  display: block;
+  float: left;
+}
