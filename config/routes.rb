@@ -1,4 +1,6 @@
 CitesUpload::Application.routes.draw do
+  devise_for :users
+
   mount Tolk::Engine => "/tolk"
   scope "(:locale)", :locale => /en|fr|es/ do
     resources :reports
