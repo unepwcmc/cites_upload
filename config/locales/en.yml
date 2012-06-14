@@ -14,9 +14,13 @@ en:
   layout:
     home: "Home"
     reports: "Reports"
+    users: "Users"
     about: "About"
     contact: "Contact"
     title: "CITES Annual Report Upload Facility"
+  users:
+    index:
+      header: "Users"
   reports:
     index:
       header: "Annual report submissions"
