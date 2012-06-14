@@ -1,5 +1,5 @@
 class Report < ActiveRecord::Base
-  attr_accessible :country, :year, :basis, :contact_details, :has_exports, :has_imports, :uploaded_exports_attributes,
+  attr_accessible :year, :basis, :has_exports, :has_imports, :uploaded_exports_attributes,
                   :uploaded_imports_attributes, :has_additional_information, :uploaded_informations_attributes, :user_id
 
   include EnumerateIt
