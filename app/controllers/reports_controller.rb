@@ -25,7 +25,7 @@ class ReportsController < ApplicationController
   # GET /reports/new
   # GET /reports/new.json
   def new
-    @report = Report.new
+    @report = Report.new(:user_id => current_user.id)
 
     @report.uploaded_exports.build(:file_type => FileTypes::EXPORT)
     @report.uploaded_imports.build(:file_type => FileTypes::IMPORT)
