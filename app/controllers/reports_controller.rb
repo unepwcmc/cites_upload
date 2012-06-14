@@ -1,4 +1,8 @@
 class ReportsController < ApplicationController
+
+  skip_before_filter :authenticate, :only => [:new, :edit, :update, :create]
+  before_filter :authenticate_user!, :only => [:new, :edit, :update, :create]
+
   # GET /reports
   # GET /reports.json
   def index

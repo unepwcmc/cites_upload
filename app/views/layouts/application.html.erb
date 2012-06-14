@@ -25,9 +25,10 @@
           <li class="<%= controller.action_name == "index" ? "active" : ""%>"><%= link_to t("layout.reports"), reports_path %></li>
         </ul>
         <ul class="nav secondary-nav">
-          <% if current_user %>
-            <li><%= link_to current_user.name, "current_user" %></li>
-            <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+          <% user = current_user || current_admin %>
+          <% if user %>
+            <li><%= link_to user.name, "current_user" %></li>
+            <li><%= link_to "Log out", current_user ? destroy_user_session_path : destroy_admin_session_path, :method => :delete %></li>
           <% else %>
             <li><%= link_to "Sign up", new_user_registration_path %></li>
             <li><%= link_to "Sign in", new_user_session_path %></li>

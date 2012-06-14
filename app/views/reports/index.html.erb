@@ -2,6 +2,9 @@
   <h1><%= t('reports.index.header') %></h1>
 </div>
 
+<% if current_user %>
+  <p><%= link_to "Submit a report", new_report_path, :class => "btn primary" %></p>
+<% end %>
 <table class="zebra-striped">
   <thead>
     <tr>
