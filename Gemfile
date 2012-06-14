@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.3'
+gem 'rails', '3.2.6'
 gem 'rake', '0.8.7'
 
 # Bundle edge Rails instead:
@@ -19,7 +19,7 @@ end
 
 gem 'jquery-rails'
 gem 'rails-i18n'
-gem 'tolk', :git => 'git://github.com/panva/tolk.git', :branch => 'master'
+gem 'tolk'#, :git => 'git://github.com/panva/tolk.git', :branch => 'master'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
