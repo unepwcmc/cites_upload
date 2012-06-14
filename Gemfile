@@ -41,7 +41,7 @@ group :test do
   gem 'turn', '~> 0.8.3', :require => false
 end
 
-gem 'bootstrap-generators', '~>1.0.1'
+gem 'bootstrap-generators', '~>2.0'
 group :development do
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
   gem 'ruby-debug19'
