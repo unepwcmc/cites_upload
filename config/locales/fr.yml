@@ -7,6 +7,7 @@ fr:
   generic: 
     word_no: Non
     word_yes: Oui
+    country: Country
   hello: Bonjour
   layout: 
     about: About
@@ -18,7 +19,6 @@ fr:
       add_file: "Add file"
       basis: "On what basis was the annual report to CITES compiled?"
       contact_details: "For questions about the report, who should be contacted?"
-      country: Country
       details_header: "Report Details"
       details_message: "This facility provides to the CITES Authorities a way of uploading their annual reports to the CITES Secretariat directly."
       has_additional_information: "Do you have additional documents to upload?"

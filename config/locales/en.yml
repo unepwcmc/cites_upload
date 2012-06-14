@@ -10,6 +10,7 @@ en:
   generic:
     word_yes: "Yes"
     word_no: "No"
+    country: "Country"
   layout:
     home: "Home"
     reports: "Reports"
@@ -24,7 +25,6 @@ en:
     form:
       details_header: "Report Details"
       details_message: "This facility provides to the CITES Authorities a way of uploading their annual reports to the CITES Secretariat directly."
-      country: "Country"
       year: "What year does the annual report cover?"
       basis: "On what basis was the annual report to CITES compiled?"
       contact_details: "For questions about the report, who should be contacted?"
