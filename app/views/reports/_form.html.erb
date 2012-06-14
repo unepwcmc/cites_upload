@@ -16,12 +16,6 @@
       <p><%= t('reports.form.details_message')%></p>
     </div>
     <div class="clearfix">
-      <%= f.label :country, t('reports.form.country') %>
-      <div class="input">
-        <%= f.select :country, Countries::LIST_OF_COUNTRIES %>
-      </div>
-    </div>
-    <div class="clearfix">
       <%= f.label :year, t('reports.form.year') %>
       <div class="input">
         <%= f.select :year, options_for_select((6.years.ago.year..1.years.ago.year).to_a.reverse, :selected => f.object.year.presence||1.year.ago.year) %>
