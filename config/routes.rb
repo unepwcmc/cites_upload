@@ -12,6 +12,7 @@ CitesUpload::Application.routes.draw do
         put :disapprove
       end
     end
+    resources :admins
   end
 
   # You can have the root of your site routed with "root"
