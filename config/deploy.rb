@@ -62,7 +62,7 @@ task :setup_production_database_configuration do
   database_user = Capistrano::CLI.ui.ask("Database username: ")
   pg_password = Capistrano::CLI.password_prompt("Database user password: ")
   require 'yaml'
-  spec = { "production" => {
+  spec = { rails_env => {
     "adapter" => "postgresql",
     "database" => database_name,
     "username" => database_user,
