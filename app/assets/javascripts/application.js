@@ -36,4 +36,6 @@ $(document).ready(function(){
       $(".alert-message").children('a.close').trigger('click'); 
     }
   }, 5000);
+
+  $("table").tablesorter({sortList:[[0,0]]});
 });
