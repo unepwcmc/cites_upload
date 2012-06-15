@@ -55,6 +55,7 @@ class ReportsController < ApplicationController
   # POST /reports.json
   def create
     @report = Report.new(params[:report])
+    @report.user = current_user
 
     respond_to do |format|
       if @report.save
