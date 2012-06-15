@@ -3,9 +3,9 @@
 </div>
 
 <ul class="tabs" data-tabs="tabs">
-  <li class="active"><a href="#tab-approved"><%= t('users.index.approved') %></a></li>
-  <li><a href="#tab-waiting"><%= t('users.index.waiting_approval') %></a></li>
-  <li><a href="#tab-admins"><%= t('users.index.admins') %></a></li>
+  <li class="active"><a href="#tab-approved"><%= t('users.index.approved') %> (<span id="approved_count"><%= @users.count %></span>)</a></li>
+  <li><a href="#tab-waiting"><%= t('users.index.waiting_approval') %> (<span id="waiting_count"><%= @waiting.count %></span>)</a></li>
+  <li><a href="#tab-admins"><%= t('users.index.admins') %> (<span id="admins_count"><%= @admins.count %></span>)</a></li>
 </ul>
 <div class="tab-content">
   <div class="active" id="tab-approved">

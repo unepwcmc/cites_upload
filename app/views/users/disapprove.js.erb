@@ -1,5 +1,7 @@
 $(function(){
   $("#options_<%=@user.id %>").html("<%= escape_javascript(link_to "Approve", approve_user_path(@user), :method => :put, :remote => true, :class => "btn success") %>");
   $("#waiting").find('tbody').append($("#user_<%=@user.id%>"));
+  $("#approved_count").text(parseInt($("#approved_count").text())-1);
+  $("#waiting_count").text(parseInt($("#waiting_count").text())+1);
 });
 
