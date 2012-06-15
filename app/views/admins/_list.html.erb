@@ -6,10 +6,10 @@
     </tr>
   </thead>
   <tbody>
-    <% users.each do |user| %>
+    <% users.each do |admin| %>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= mail_to user.email %></td>
+        <td><%= admin.name %></td>
+        <td><%= mail_to admin.email %></td>
       </tr>
     <% end %>
   </tbody>
