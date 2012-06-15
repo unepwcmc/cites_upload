@@ -7,7 +7,7 @@ class ReportsController < ApplicationController
   # GET /reports.json
   def index
     if current_admin
-      @users = User.approved
+      @users = User.approved.includes(:reports)
       @min_year = Report.minimum('year')||6.year.ago.year
       @max_year = Report.maximum('year')||1.year.ago.year
       respond_to do |format|

@@ -30,8 +30,8 @@
           <ul class="nav secondary-nav">
             <% user = current_user || current_admin %>
             <% if user %>
-              <li><%= link_to user.name, "current_user" %></li>
-              <li><%= link_to "Log out", current_user ? destroy_user_session_path : destroy_admin_session_path, :method => :delete %></li>
+              <li><%= link_to user.name, user.is_a?(User) ? user : edit_admin_registration_path(user) %></li>
+              <li><%= link_to "Log out", user.is_a?(User) ? destroy_user_session_path : destroy_admin_session_path, :method => :delete %></li>
             <% else %>
               <li><%= link_to "Sign up", new_user_registration_path %></li>
               <li><%= link_to "Sign in", new_user_session_path %></li>

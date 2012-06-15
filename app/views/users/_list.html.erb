@@ -11,8 +11,8 @@
   <tbody>
     <% users.each do |user| %>
       <tr id="user_<%= user.id%>">
-        <td><%= user.country %></td>
-        <td><%= link_to user.name, user %></td>
+        <td><%= link_to user.country, user %></td>
+        <td><%= user.name %></td>
         <td><%= mail_to user.email %></td>
         <td><%= user.reports.count %></td>
         <td id="options_<%= user.id %>">
