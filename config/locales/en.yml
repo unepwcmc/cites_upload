@@ -51,6 +51,7 @@ en:
       add_file: Add another file
       submit: Submit
       file_chosen: File chosen
+      confirmation_header: Please check over the details of the  and press ‘Submit’ to submit the annual report to the CITES Secretariat.
     show:
       back: Back
       edit: Edit

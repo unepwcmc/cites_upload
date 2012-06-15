@@ -65,7 +65,7 @@ function fillInModalDetails(){
       }
     });
     if($("#confirm_exports").children('li').length === 0){
-      $("#confirm_exports").append("<li>You added 0 exports</li>");
+      $("#confirm_exports").append("<li>No export files were added.</li>");
     }
   }
   $("#confirm_imports").empty();
@@ -78,7 +78,7 @@ function fillInModalDetails(){
       }
     });
     if($("#confirm_imports").children('li').length === 0){
-      $("#confirm_imports").append("<li>You added 0 imports</li>");
+      $("#confirm_imports").append("<li>No import files were added.</li>");
     }
   }
   $("#confirm_additional_information").empty();
@@ -91,7 +91,7 @@ function fillInModalDetails(){
       }
     });
     if($("#confirm_additional_information").children('li').length === 0){
-      $("#confirm_additional_information").append("<li>You added 0 additional information</li>");
+      $("#confirm_additional_information").append("<li>No additional information was added.</li>");
     }
   }
 }

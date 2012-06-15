@@ -1,3 +1,26 @@
 <div class="page-header">
   <h1><%= @user.country %></h1>
 </div>
+
+<table class="zebra-striped condensed-table bordered-table">
+  <thead>
+    <tr>
+      <th><%=t('reports.show.year')%></th>
+      <th><%=t('reports.show.basis')%></th>
+      <th><%=t('reports.show.exports')%></th>
+      <th><%=t('reports.show.imports')%></th>
+      <th><%=t('reports.show.additional_information')%></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= link_to report.year, report %></td>
+        <td><%= report.basis_humanize %></td>
+        <td><%= report.uploaded_exports.count %></td>
+        <td><%= report.uploaded_imports.count %></td>
+        <td><%= report.uploaded_informations.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
