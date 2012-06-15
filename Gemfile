@@ -9,7 +9,8 @@ gem 'rake', '0.8.7'
 gem 'pg'
 gem 'enumerate_it'
 gem 'paperclip', '~> 2.4'
-gem 'aws-s3'
+#gem 'aws-s3'
+gem 'aws-sdk'
 gem 'devise'
 
 # Gems used only for assets and not required
