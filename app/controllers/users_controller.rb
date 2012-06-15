@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  skip_before_filter :authenticate
-  before_filter :authenticate_admin!
+  skip_before_filter :authenticate, :except => [:show]
+  before_filter :authenticate_admin!, :except => [:show]
 
   def index
     @waiting = User.where(:approved => false).order(:created_at)

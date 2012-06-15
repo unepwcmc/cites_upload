@@ -15,6 +15,7 @@ class ReportsController < ApplicationController
         format.json { render :json => @reports }
       end
     elsif current_user
+      redirect_to current_user
       #redirect user to user page
     end
   end

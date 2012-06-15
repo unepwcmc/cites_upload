@@ -18,6 +18,7 @@ en:
   layout:
     home: Home
     reports: Reports
+    new_report: New Report
     users: Users
     about: About
     contact: Contact
@@ -40,7 +41,7 @@ en:
       year: What year does the annual report cover?
       basis: On what basis was the annual report to CITES compiled?
       upload_header: Upload Files
-      upload_message: Please upload the annual report files for submission to CITES. The preferred format is Excel or csv with the report formatted as shown in the examples provided. Please use the appropriate codes for countries, trade terms, purpose and source as specified within the <a href='%{guidelines_url}'>Guidelines for the preparation of the annual reports to CITES</a>.
+      upload_message: Please upload the annual report files for submission to CITES. The preferred format is Excel or csv with the report formatted as shown in the examples provided. Please use the appropriate codes for countries, trade terms, purpose and source as specified within the <a href='%{guidelines_url}'>Guidelines for the preparation and submission of CITES annual reports</a>.
       tab_exports: Exports
       tab_imports: Imports
       tab_information: Additional Information
