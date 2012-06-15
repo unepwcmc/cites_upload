@@ -30,4 +30,10 @@ $(document).ready(function(){
   if($("#new_report").length > 0){
     confirmSubmission();
   }
+  //autoclose flash messages
+  setTimeout(function() { 
+    if($(".alert-message").length > 0 ){
+      $(".alert-message").children('a.close').trigger('click'); 
+    }
+  }, 5000);
 });

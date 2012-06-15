@@ -1,0 +1,4 @@
+$(function(){
+  $("#options_<%=@user.id %>").html("<%= escape_javascript(link_to "Disapprove", disapprove_user_path(@user), :method => :put, :remote => true, :class => "btn danger") %>");
+  $("#approved").find('tbody').append($("#user_<%=@user.id%>"));
+});

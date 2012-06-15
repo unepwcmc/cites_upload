@@ -1,0 +1,4 @@
+<%= content_tag :div, :class => "alert alert-message #{name == :error ? "error" : "success" }", :"data-alert" => "alert" do %>
+  <a class="close" href="#">×</a>
+  <p><%= msg %></p>
+<% end %>

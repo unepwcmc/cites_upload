@@ -1,3 +1,20 @@
 <div class="page-header">
   <h1><%= t('users.index.header') %></h1>
 </div>
+
+<ul class="tabs" data-tabs="tabs">
+  <li class="active"><a href="#tab-approved"><%= t('users.index.approved') %></a></li>
+  <li><a href="#tab-waiting"><%= t('users.index.waiting_approval') %></a></li>
+  <li><a href="#tab-admins"><%= t('users.index.admins') %></a></li>
+</ul>
+<div class="tab-content">
+  <div class="active" id="tab-approved">
+    <%= render :partial => "list", :locals => { :users => @users, :table_id => "approved" } %>
+  </div>
+  <div id="tab-waiting">
+    <%= render :partial => "list", :locals => { :users => @waiting, :table_id => "waiting" } %>
+  </div>
+  <div id="tab-admins">
+    <%= render :partial => "admins/list", :locals => { :users => @admins } %>
+  </div>
+</div>

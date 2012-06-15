@@ -1,0 +1,31 @@
+<table class="zebra-striped condensed-table bordered-table" id="<%= table_id %>">
+  <thead>
+    <tr>
+      <th><%= t('generic.party') %></th>
+      <th><%= t('generic.name') %></th>
+      <th><%= t('generic.email') %></th>
+      <th><%= t('users.index.no_of_reports') %></th>
+      <th><%= t('generic.options') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr id="user_<%= user.id%>">
+        <td><%= user.country %></td>
+        <td><%= link_to user.name, user %></td>
+        <td><%= mail_to user.email %></td>
+        <td><%= user.reports.count %></td>
+        <td id="options_<%= user.id %>">
+          <% if user.approved? %>
+            <%= link_to "Disapprove", disapprove_user_path(user), :method => :put, :remote => true, :class => "btn danger" %>
+          <% else %>
+            <%= link_to "Approve", approve_user_path(user), :method => :put, :remote => true, :class => "btn success" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<script type="text/javascript">
+  $("#<%= table_id %>").tablesorter({sortList:[[0,0]]});
+</script>

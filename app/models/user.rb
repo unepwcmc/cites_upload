@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates_presence_of :country
 
   has_many :reports
+  scope :approved, where(:approved => true).order(:country)
 
   def active_for_authentication?
     super && approved?
