@@ -54,11 +54,16 @@
         </div>
       </div>
       <footer>
-      <p>
-      <span class='footer_logo'><%= link_to image_tag('unepwcmc.gif', :width => '85'), 'http://www.unep-wcmc.org' %></span>
-      This facility was developed and is maintained by <a href="http://www.unep-wcmc.org">UNEP-WCMC</a> on behalf of the <a href="http://www.cites.org">CITES Secretariat</a><br />
-      For further information, please contact UNEP-WCMC at <%= mail_to "species@unep-wcmc.org" %>
-      </p>
+        <p>
+          <span>
+            <%= link_to image_tag('unepwcmc.gif', :width => '85'), 'http://www.unep-wcmc.org' %>
+          </span>
+          <span>
+            This facility was developed and is maintained by <a href="http://www.unep-wcmc.org">UNEP-WCMC</a> on behalf of the <a href="http://www.cites.org">CITES Secretariat</a><br />
+            For further information, please contact UNEP-WCMC at <%= mail_to "species@unep-wcmc.org" %>
+          </span>
+          <%= link_to image_tag('CITES.jpg', :width => '85'), 'http://www.cites.org' %>
+        </p>
       </footer>
     </div>
   </body>

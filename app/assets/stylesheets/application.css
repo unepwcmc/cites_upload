@@ -52,7 +52,7 @@ ul.tabs > li.active > a {
   color: orange;
 }
 
-span.footer_logo {
+footer span {
   display: block;
   float: left;
 }
