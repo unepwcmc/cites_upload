@@ -19,7 +19,7 @@ function add_fields(link, association, content) {
 }
 
 function enableDisplayingSelectedFile(translatedText){
-  $("div#export, div#import, div#information").delegate('input.upload_file', 'change', function(){
+  $("div#exports, div#imports, div#additional_information").delegate('input.upload_file', 'change', function(){
       if($(this).val()!==""){
         $(this).parent().nextAll('span').html(translatedText+": <em>"+$(this).val()+"</em>");
         $(this).parent().nextAll('span').show('slow');
@@ -55,7 +55,7 @@ function fillInModalDetails(){
   $("#confirm_basis").html($("#report_basis option:selected").text());
   $("#confirm_exports").empty();
   if($("#report_has_exports_false").is(':checked')){
-    $("#confirm_exports").append("<li>You said that there are no exports</li>");
+    $("#confirm_exports").append("<li>No export files were added.</li>");
   }else{
     $("#uploaded_exports").find('.upload_file').each(function(){
       if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
@@ -68,7 +68,7 @@ function fillInModalDetails(){
   }
   $("#confirm_imports").empty();
   if($("#report_has_imports_false").is(':checked')){
-    $("#confirm_imports").append("<li>You said that there are no imports</li>");
+    $("#confirm_imports").append("<li>No import files were added.</li>");
   }else{
     $("#uploaded_imports").find('.upload_file').each(function(){
       if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
@@ -81,9 +81,9 @@ function fillInModalDetails(){
   }
   $("#confirm_additional_information").empty();
   if($("#report_has_additional_information_false").is(':checked')){
-    $("#confirm_additional_information").append("<li>You said that there is no additional information</li>");
+    $("#confirm_additional_information").append("<li>No additional information was added.</li>");
   }else{
-    $("#uploaded_information").find('.upload_file').each(function(){
+    $("#uploaded_additional_information").find('.upload_file').each(function(){
       if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
         $("#confirm_additional_information").append("<li>"+$(this).val()+"</li>");
       }

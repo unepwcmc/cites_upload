@@ -36,61 +36,19 @@
       <p><%= t('reports.form.upload_message', :guidelines_url => "http://www.cites.org/eng/notif/2011/E019A.pdf").html_safe %></p>
     </div>
     <ul class="tabs" data-tabs="tabs">
-      <li class="active"><a href="#export"><%= t('reports.form.tab_exports') %></a></li>
-      <li><a href="#import"><%= t('reports.form.tab_imports') %></a></li>
-      <li><a href="#information"><%= t('reports.form.tab_information') %></a></li>
+      <li class="active"><a href="#exports"><%= t('reports.form.tab_exports') %></a></li>
+      <li><a href="#imports"><%= t('reports.form.tab_imports') %></a></li>
+      <li><a href="#additional_information"><%= t('reports.form.tab_information') %></a></li>
     </ul>
     <div class="tab-content">
-      <div id="export" class="active">
-        <div class="clearfix">
-          <%= f.label :has_exports, t('reports.form.has_exports') %>
-          <div class="input">
-            <label for="report_has_exports_true" class="inline"><%= t('generic.word_yes') %></label> <%= f.radio_button :has_exports, true %><br />
-            <label for="report_has_exports_false" class="inline"><%= t('generic.word_no') %></label> <%= f.radio_button :has_exports, false %>
-          </div>
-        </div>
-        <div class='inset <%= f.object.has_exports? ? "" : "hide"%>' id="uploaded_exports">
-          <%= link_to_add_fields t('reports.form.add_file'), f, :uploaded_exports, FileTypes::EXPORT, @report.new_record? %><br />
-          <div class="uploaded_exports">
-            <%= f.fields_for :uploaded_exports do |file_form| %>
-              <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form } %>
-            <% end %>
-          </div>
-        </div>
+      <div id="exports" class="active">
+        <%= render :partial => "files_form", :locals => {:report => @report, :file_type => 'export', :f => f}%>
       </div>
-      <div id="import">
-        <div class="clearfix">
-          <%= f.label :has_imports, t('reports.form.has_imports') %>
-          <div class="input">
-            <label for="report_has_imports_true" class="inline"><%= t('generic.word_yes') %></label> <%= f.radio_button :has_imports, true %><br />
-            <label for="report_has_imports_false" class="inline"><%= t('generic.word_no') %></label> <%= f.radio_button :has_imports, false %>
-          </div>
-        </div>
-        <div class='inset <%= f.object.has_imports? ? "" : "hide"%>' id="uploaded_imports">
-          <%= link_to_add_fields t('reports.form.add_file'), f, :uploaded_imports, FileTypes::IMPORT, @report.new_record? %><br />
-          <div class="uploaded_imports">
-            <%= f.fields_for :uploaded_imports do |file_form| %>
-              <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form } %>
-            <% end %>
-          </div>
-        </div>
+      <div id="imports">
+        <%= render :partial => "files_form", :locals => {:report => @report, :file_type => 'import', :f => f}%>
       </div>
-      <div id="information">
-        <div class="clearfix">
-          <%= f.label :has_additional_information, t('reports.form.has_additional_information') %>
-          <div class="input">
-            <label for="report_has_additional_information_true" class="inline"><%= t('generic.word_yes') %></label> <%= f.radio_button :has_additional_information, true %><br />
-            <label for="report_has_additional_information_false" class="inline"><%= t('generic.word_no') %></label> <%= f.radio_button :has_additional_information, false %>
-          </div>
-        </div>
-        <div class='inset <%= f.object.has_additional_information? ? "" : "hide"%>' id="uploaded_information">
-          <%= link_to_add_fields t('reports.form.add_file'), f, :uploaded_information, FileTypes::INFORMATION, @report.new_record? %><br />
-          <div class="uploaded_information">
-            <%= f.fields_for :uploaded_information do |file_form| %>
-              <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form } %>
-            <% end %>
-          </div>
-        </div>
+      <div id="additional_information">
+        <%= render :partial => "files_form", :locals => {:report => @report, :file_type => 'additional-information', :f => f}%>
       </div>
     </div>
   </fieldset>

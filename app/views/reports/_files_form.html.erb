@@ -1,0 +1,16 @@
+<% pluralized = file_type.pluralize.underscore %>
+<div class="clearfix">
+  <%= f.label "has_#{pluralized}", t("reports.form.has_#{pluralized}") %>
+  <div class="input">
+    <label for="report_has_<%=pluralized%>_true" class="inline"><%= t('generic.word_yes') %></label> <%= f.radio_button "has_#{pluralized}", true %><br />
+    <label for="report_has_<%=pluralized%>_false" class="inline"><%= t('generic.word_no') %></label> <%= f.radio_button "has_#{pluralized}", false %>
+  </div>
+</div>
+<div class='inset <%= f.object.send("has_#{pluralized}?") ? "" : "hide"%>' id="uploaded_<%= pluralized %>">
+  <%= link_to_add_fields t('reports.form.add_file'), f, "uploaded_#{pluralized}".to_sym, "FileTypes::#{file_type.underscore.upcase}".constantize, report.new_record? %><br />
+  <div class="uploaded_<%=pluralized%>">
+    <%= f.fields_for "uploaded_#{pluralized}" do |file_form| %>
+      <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form } %>
+    <% end %>
+  </div>
+</div>

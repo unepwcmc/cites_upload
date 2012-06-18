@@ -38,7 +38,7 @@ class ReportsController < ApplicationController
 
     @report.uploaded_exports.build(:file_type => FileTypes::EXPORT)
     @report.uploaded_imports.build(:file_type => FileTypes::IMPORT)
-    @report.uploaded_information.build(:file_type => FileTypes::INFORMATION)
+    @report.uploaded_additional_information.build(:file_type => FileTypes::ADDITIONAL_INFORMATION)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,6 +49,9 @@ class ReportsController < ApplicationController
   # GET /reports/1/edit
   def edit
     @report = Report.find(params[:id])
+    @report.uploaded_exports.build(:file_type => FileTypes::EXPORT) if !@report.uploaded_exports.any?
+    @report.uploaded_imports.build(:file_type => FileTypes::IMPORT) if !@report.uploaded_imports.any?
+    @report.uploaded_additional_information.build(:file_type => FileTypes::ADDITIONAL_INFORMATION) if !@report.uploaded_additional_information.any?
   end
 
   # POST /reports
