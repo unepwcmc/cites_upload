@@ -1,0 +1,9 @@
+<% if report.send("has_#{file_type}?") %>
+  <ul>
+    <% report.send("uploaded_#{file_type}").each do |file| %>
+      <li><%= link_to file.document_file_name, file.document.url %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p><%=t("reports.show.no_#{file_type}")%></p>
+<% end %>

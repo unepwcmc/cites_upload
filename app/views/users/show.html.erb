@@ -17,9 +17,15 @@
       <tr>
         <td><%= link_to report.year, report %></td>
         <td><%= report.basis_humanize %></td>
-        <td><%= report.uploaded_exports.count %></td>
-        <td><%= report.uploaded_imports.count %></td>
-        <td><%= report.uploaded_informations.count %></td>
+        <td>
+          <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "exports"} %>
+        </td>
+        <td>
+          <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "imports"} %>
+        </td>
+        <td>
+          <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "additional_information"} %>
+        </td>
       </tr>
     <% end %>
   </tbody>

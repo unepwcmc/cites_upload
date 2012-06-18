@@ -13,34 +13,12 @@
 </dl>
 
 <p><strong><%=t('reports.show.exports')%></strong></p>
-<% if @report.has_exports? %>
-  <ul>
-    <% @report.uploaded_exports.each do |file| %>
-      <li><%= link_to file.document_file_name, file.document.url %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <%=t('reports.show.no_exports')%>
-<% end %>
+<%= render :partial => "uploaded_files/list", :locals => {:report => @report, :file_type => "exports"} %>
 
 <p><strong><%=t('reports.show.imports')%></strong></p>
-<% if @report.has_imports? %>
-  <ul>
-    <% @report.uploaded_imports.each do |file| %>
-      <li><%= link_to file.document_file_name, file.document.url %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <%=t('reports.show.no_imports')%>
-<% end %>
+<%= render :partial => "uploaded_files/list", :locals => {:report => @report, :file_type => "imports"} %>
 
 <p><strong><%=t('reports.show.additional_information')%></strong></p>
-<% if @report.has_additional_information? %>
-  <ul>
-    <% @report.uploaded_informations.each do |file| %>
-      <li><%= link_to file.document_file_name, file.document.url %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <%=t('reports.show.additional_information')%>
-<% end %>
+<%= render :partial => "uploaded_files/list", :locals => {:report => @report, :file_type => "additional_information"} %>
+
+<p><%= link_to "Amend", edit_report_path(@report), :class => "btn success" %></p>
