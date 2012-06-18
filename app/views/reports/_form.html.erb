@@ -53,7 +53,7 @@
           <%= link_to_add_fields t('reports.form.add_file'), f, :uploaded_exports, FileTypes::EXPORT, @report.new_record? %><br />
           <div class="uploaded_exports">
             <%= f.fields_for :uploaded_exports do |file_form| %>
-              <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
+              <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form } %>
             <% end %>
           </div>
         </div>
@@ -70,7 +70,7 @@
           <%= link_to_add_fields t('reports.form.add_file'), f, :uploaded_imports, FileTypes::IMPORT, @report.new_record? %><br />
           <div class="uploaded_imports">
             <%= f.fields_for :uploaded_imports do |file_form| %>
-              <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
+              <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form } %>
             <% end %>
           </div>
         </div>
@@ -83,11 +83,11 @@
             <label for="report_has_additional_information_false" class="inline"><%= t('generic.word_no') %></label> <%= f.radio_button :has_additional_information, false %>
           </div>
         </div>
-        <div class='inset <%= f.object.has_additional_information? ? "" : "hide"%>' id="uploaded_informations">
-          <%= link_to_add_fields t('reports.form.add_file'), f, :uploaded_informations, FileTypes::INFORMATION, @report.new_record? %><br />
-          <div class="uploaded_informations">
-            <%= f.fields_for :uploaded_informations do |file_form| %>
-              <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form, :file_type => FileTypes::EXPORT } %>
+        <div class='inset <%= f.object.has_additional_information? ? "" : "hide"%>' id="uploaded_information">
+          <%= link_to_add_fields t('reports.form.add_file'), f, :uploaded_information, FileTypes::INFORMATION, @report.new_record? %><br />
+          <div class="uploaded_information">
+            <%= f.fields_for :uploaded_information do |file_form| %>
+              <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form } %>
             <% end %>
           </div>
         </div>

@@ -83,7 +83,7 @@ function fillInModalDetails(){
   if($("#report_has_additional_information_false").is(':checked')){
     $("#confirm_additional_information").append("<li>You said that there is no additional information</li>");
   }else{
-    $("#uploaded_informations").find('.upload_file').each(function(){
+    $("#uploaded_information").find('.upload_file').each(function(){
       if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
         $("#confirm_additional_information").append("<li>"+$(this).val()+"</li>");
       }

@@ -38,7 +38,7 @@ class ReportsController < ApplicationController
 
     @report.uploaded_exports.build(:file_type => FileTypes::EXPORT)
     @report.uploaded_imports.build(:file_type => FileTypes::IMPORT)
-    @report.uploaded_informations.build(:file_type => FileTypes::INFORMATION)
+    @report.uploaded_information.build(:file_type => FileTypes::INFORMATION)
 
     respond_to do |format|
       format.html # new.html.erb

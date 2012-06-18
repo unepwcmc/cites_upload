@@ -21,4 +21,6 @@
 <p><strong><%=t('reports.show.additional_information')%></strong></p>
 <%= render :partial => "uploaded_files/list", :locals => {:report => @report, :file_type => "additional_information"} %>
 
-<p><%= link_to "Amend", edit_report_path(@report), :class => "btn success" %></p>
+<% if current_user && current_user == @report.user %>
+  <p><%= link_to "Amend", edit_report_path(@report), :class => "btn success" %></p>
+<% end %>

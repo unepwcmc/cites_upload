@@ -1,6 +1,6 @@
 class Report < ActiveRecord::Base
   attr_accessible :year, :basis, :has_exports, :has_imports, :uploaded_exports_attributes,
-                  :uploaded_imports_attributes, :has_additional_information, :uploaded_informations_attributes, :user_id
+                  :uploaded_imports_attributes, :has_additional_information, :uploaded_information_attributes, :user_id
 
   include EnumerateIt
   has_enumeration_for :basis, :with => CompilationBasis, :create_helpers => true
@@ -8,10 +8,12 @@ class Report < ActiveRecord::Base
   belongs_to :user
   has_many :uploaded_exports, :class_name => "UploadedFile", :conditions => "file_type = #{FileTypes::EXPORT}"
   has_many :uploaded_imports, :class_name => "UploadedFile", :conditions => "file_type = #{FileTypes::IMPORT}"
-  has_many :uploaded_informations, :class_name => "UploadedFile", :conditions => "file_type = #{FileTypes::INFORMATION}"
+  has_many :uploaded_information, :class_name => "UploadedFile", :conditions => "file_type = #{FileTypes::INFORMATION}"
   accepts_nested_attributes_for :uploaded_exports, :allow_destroy => true, :reject_if => proc {|attributes| attributes['document'].blank?}
   accepts_nested_attributes_for :uploaded_imports, :allow_destroy => true, :reject_if => proc {|attributes| attributes['document'].blank?}
-  accepts_nested_attributes_for :uploaded_informations, :allow_destroy => true, :reject_if => proc {|attributes| attributes['document'].blank?}
+  accepts_nested_attributes_for :uploaded_information, :allow_destroy => true, :reject_if => proc {|attributes| attributes['document'].blank?}
+
+  alias :uploaded_additional_information :uploaded_information
 end
 # == Schema Information
 #
