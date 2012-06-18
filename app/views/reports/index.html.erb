@@ -21,7 +21,16 @@
         <td><%= link_to user.country, user %></td>
         <% (@min_year..@max_year).each do |year| %>
           <% report = user.reports.where(:year => year).first %>
-          <td><%= report ? link_to(report.basis_humanize, report) : "n/a" %></td>
+          <td>
+            <% if report %>
+              <p><%= link_to "See report", report %></p>
+              <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "exports", :index => true} %>
+              <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "imports", :index => true} %>
+              <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "additional_information", :index => true} %>
+            <% else %>
+              n/a
+            <% end %>
+          </td>
         <% end %>
       </tr>
     <% end %>

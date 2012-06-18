@@ -1,9 +1,15 @@
+<% index ||= false %>
 <% if report.send("has_#{file_type}?") %>
-  <ul>
-    <% report.send("uploaded_#{file_type}").each do |file| %>
-      <li><%= link_to file.document_file_name, file.document.url %></li>
+  <p>
+    <% if index %>
+      <strong><%= t("reports.show.#{file_type}") %>:</strong>
     <% end %>
-  </ul>
+    <% report.send("uploaded_#{file_type}").each do |file| %>
+      <%= link_to file.document_file_name, file.document.url %><br />
+    <% end %>
+  </p>
 <% else %>
-  <p><%=t("reports.show.no_#{file_type}")%></p>
+  <% if !index %>
+    <p><%=t("reports.show.no_#{file_type}")%></p>
+  <% end %>
 <% end %>
