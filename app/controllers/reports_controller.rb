@@ -59,7 +59,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.save
-        format.html { redirect_to @report, :notice => 'Report was successfully created.' }
+        format.html { redirect_to @report, :notice => I18n.t('flash.rep_created') }
         format.json { render :json => @report, :status => :created, :location => @report }
       else
         format.html { render :action => "new" }

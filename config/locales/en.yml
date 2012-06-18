@@ -53,18 +53,21 @@ en:
       file_chosen: File chosen
       confirmation_header: Please check over the details of the  and press ‘Submit’ to submit the annual report to the CITES Secretariat.
     show:
+      title: 'Annual report details'
       back: Back
       edit: Edit
       year: Year
       basis: Basis
       contact_details: Contact details
       exports: Exports
-      no_exports: "You said you had no exports."
+      no_exports: "No export files were added."
       imports: Imports
-      no_imports: "You said you had no imports."
+      no_imports: "No import files were added."
       additional_information: Additional Information
-      no_additional_information: "You said you had no additional informations."
+      no_additional_information: "No additional information was added."
   uploaded_files:
     document: Please select a file to upload
     remove: Remove
     file: File
+  flash:
+    rep_created: "Annual report was successfully submitted."
