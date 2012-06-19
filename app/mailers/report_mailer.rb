@@ -1,0 +1,15 @@
+class ReportMailer < ActionMailer::Base
+  default from: "no-reply@unep-wcmc.org"
+
+  def report_submitted report
+    @report = report
+    @user = report.user
+    mail(:to => "#{@user.name} <#{@user.email}>", :subject => "[CITES Upload] Annual Report Submitted")
+  end
+
+  def report_submitted_admin report
+    @report = report
+    @user = report.user
+    mail(:to => Admin.all.map{|a| "#{a.name} <#{a.email}>"}.join(','), :subject => "[CITES Upload] #{@user.country} Annual Report Submitted")
+  end
+end

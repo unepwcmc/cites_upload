@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def approve
     @user = User.find(params[:id])
     if @user.update_attribute(:approved, true)
-      #email user
+      UserMailer.user_approved(@user).deliver
       flash[:notice] = "User has been approved"
       respond_to do |format|
         format.js
