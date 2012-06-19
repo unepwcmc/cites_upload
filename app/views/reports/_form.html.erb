@@ -16,13 +16,13 @@
       <p><%= t('reports.form.details_message')%></p>
     </div>
     <div class="clearfix">
-      <%= f.label :year, t('reports.form.year') %>
+      <%= f.label :year, (t('reports.form.year') + " <a href='#' data-placement='below' rel='twipsy' title='#{t('tooltips.year')}' class='tooltips'>#{image_tag('tooltip.gif')}</a>").html_safe %>
       <div class="input">
         <%= f.select :year, options_for_select((6.years.ago.year..1.years.ago.year).to_a.reverse, :selected => f.object.year.presence||1.year.ago.year) %>
       </div>
     </div>
     <div class="clearfix">
-      <%= f.label :basis, t('reports.form.basis') %>
+      <%= f.label :basis, (t('reports.form.basis') + " <a href='#' data-placement='below' rel='twipsy' title='#{t('tooltips.basis')}' class='tooltips'>#{image_tag('tooltip.gif')}</a>").html_safe %>
       <div class="input">
         <%= f.select :basis, CompilationBasis.to_a %>
       </div>

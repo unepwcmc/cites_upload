@@ -23,6 +23,9 @@ en:
     about: About
     contact: Contact
     title: CITES Annual Report Upload Facility
+  tooltips:
+    year: "CITES Annual reports should cover the calendar year 1 January – 31 December. Enter the year in which the trade took place if the report is compiled on the basis of actual trade, or the year in which the permit was issued if the report was compiled on the basis of permits issued."
+    basis: "Please indicate whether the annual report was compiled on the basis of permits issued or actual trade. As far as possible, the data in the report should record the actual trade that took place, i.e. the quantity of specimens that entered or left the country."
   users:
     index:
       header: Users
