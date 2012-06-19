@@ -38,7 +38,7 @@ $(document).ready(function(){
     }
   }, 5000);
 
-  $("table").tablesorter({sortList:[[0,0]]});
+  $("table").tablesorter();
 
   $(".tooltips").twipsy();
 });

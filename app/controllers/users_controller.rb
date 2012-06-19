@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.includes(:reports).find(params[:id])
-    @reports = @user.reports.order(:year)
+    @reports = @user.reports.order("year DESC")
   end
 
   def approve
