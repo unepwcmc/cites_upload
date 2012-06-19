@@ -23,7 +23,7 @@ function enableDisplayingSelectedFile(translatedText){
       if($(this).val()!==""){
         var objRE = new RegExp(/([^\/\\]+)$/);
         var strName = objRE.exec($(this).val());
-        $(this).parent().nextAll('span').html(translatedText+": <em>"+strName[0]+"</em>");
+        $(this).parent().nextAll('span').html(translatedText+": <em>"+strName[1]+"</em>");
         $(this).parent().nextAll('span').show('slow');
         if($(this).parent().parent().parent().prevAll('.add_file').hasClass('hide')){
           $(this).parent().parent().parent().prevAll('.add_file').removeClass('hide');
