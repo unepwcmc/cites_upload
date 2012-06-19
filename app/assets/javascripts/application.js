@@ -12,6 +12,7 @@ $(document).ready(function(){
   $("input[type=radio]").change(function(){
     if(this.value == "true"){
       $(this).parents('.clearfix').next().show('slow');
+      $(this).parents('.clearfix').next().next().show('slow');
       //change the documents that were marked to be removed by the user interaction with Yes or No question.
       $(this).parents('.clearfix').next().find('.to_be_removed').each(function(){
         $(this).val("0").removeClass("to_be_removed");

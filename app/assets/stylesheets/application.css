@@ -34,10 +34,6 @@ fieldset{
   display:none;
 }
 
-.btn.add_file{
-  float: right;
-}
-
 fieldset#files_upload_section{
   font-size: 16px;
 }
@@ -46,6 +42,10 @@ fieldset#files_upload_section label{
 }
 fieldset#files_upload_section p{
   font-size: 14px;
+}
+
+.btn.remove.danger {
+  float: right;
 }
 
 ul.tabs > li.active > a {
