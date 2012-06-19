@@ -21,7 +21,9 @@ function add_fields(link, association, content) {
 function enableDisplayingSelectedFile(translatedText){
   $("div#exports, div#imports, div#additional_information").delegate('input.upload_file', 'change', function(){
       if($(this).val()!==""){
-        $(this).parent().nextAll('span').html(translatedText+": <em>"+$(this).val()+"</em>");
+        var objRE = new RegExp(/([^\/\\]+)$/);
+        var strName = objRE.exec($(this).val());
+        $(this).parent().nextAll('span').html(translatedText+": <em>"+strName[0]+"</em>");
         $(this).parent().nextAll('span').show('slow');
         if($(this).parent().parent().parent().prevAll('.add_file').hasClass('hide')){
           $(this).parent().parent().parent().prevAll('.add_file').removeClass('hide');
