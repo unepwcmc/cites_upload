@@ -40,7 +40,7 @@ module Countries
     'Comoros',
     'Congo',
     'Costa Rica',
-    "Côte d'Ivoire",
+    "Cote d'Ivoire",
     'Croatia',
     'Cuba',
     'Cyprus',
