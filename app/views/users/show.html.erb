@@ -10,6 +10,7 @@
       <th><%=t('reports.show.exports')%></th>
       <th><%=t('reports.show.imports')%></th>
       <th><%=t('reports.show.additional_information')%></th>
+      <th><%=t('reports.show.submission_date')%></th>
     </tr>
   </thead>
   <tbody>
@@ -26,6 +27,7 @@
         <td>
           <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "additional_information"} %>
         </td>
+        <td><%= report.created_at.strftime("%d/%m/%Y") %></td>
       </tr>
     <% end %>
   </tbody>

@@ -68,6 +68,7 @@ en:
       no_imports: "No import files were added."
       additional_information: Additional Information
       no_additional_information: "No additional information was added."
+      submission_date: "Submission date"
   uploaded_files:
     document: Please select a file to upload
     remove: Remove

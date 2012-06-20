@@ -23,7 +23,7 @@
           <% report = user.reports.where(:year => year).first %>
           <td>
             <% if report %>
-              <p><%= link_to "Annual report", report %></p>
+              <p><%= link_to report.created_at.strftime("%d/%m/%Y"), report %></p>
               <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "exports", :index => true} %>
               <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "imports", :index => true} %>
               <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "additional_information", :index => true} %>
