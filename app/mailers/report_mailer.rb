@@ -7,9 +7,10 @@ class ReportMailer < ActionMailer::Base
     mail(:to => "#{@user.name} <#{@user.email}>", :subject => "[CITES Upload] Annual Report Submitted")
   end
 
-  def report_submitted_admin report
+  def report_submitted_admin report, url
     @report = report
     @user = report.user
+    @url = url
     mail(:to => Admin.all.map{|a| "#{a.name} <#{a.email}>"}.join(','), :subject => "[CITES Upload] #{@user.country} Annual Report Submitted")
   end
 end
