@@ -11,12 +11,13 @@
       <th><%=t('reports.show.imports')%></th>
       <th><%=t('reports.show.additional_information')%></th>
       <th><%=t('reports.show.submission_date')%></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @reports.each do |report| %>
       <tr>
-        <td><%= link_to report.year, report %></td>
+        <td><%= report.year%></td>
         <td><%= report.basis_humanize %></td>
         <td>
           <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "exports"} %>
@@ -28,6 +29,7 @@
           <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "additional_information"} %>
         </td>
         <td><%= report.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= link_to "Amend", edit_report_path(report), :class => "btn success" %></td>
       </tr>
     <% end %>
   </tbody>
