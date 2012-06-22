@@ -65,7 +65,7 @@ class ReportsController < ApplicationController
         url = "http://" + request.host
         ReportMailer.report_submitted(@report).deliver
         ReportMailer.report_submitted_admin(@report, url).deliver
-        format.html { redirect_to @report, :notice => I18n.t('flash.rep_created') }
+        format.html { redirect_to @report.user, :notice => I18n.t('flash.rep_created') }
         format.json { render :json => @report, :status => :created, :location => @report }
       else
         format.html { render :action => "new" }
