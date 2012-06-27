@@ -27,6 +27,9 @@
               <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "exports", :index => true} %>
               <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "imports", :index => true} %>
               <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "additional_information", :index => true} %>
+              <% if report.updated_at != report.created_at %>
+                <p><strong>Updated:</strong> <%= report.updated_at.strftime("%d/%m/%Y") %> </p>
+              <% end %>
             <% else %>
               n/a
             <% end %>
