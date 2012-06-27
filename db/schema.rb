@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614170012) do
+ActiveRecord::Schema.define(:version => 20120627163512) do
 
   create_table "admins", :force => true do |t|
     t.string   "name"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(:version => 20120614170012) do
     t.boolean  "has_imports"
     t.boolean  "has_additional_information"
     t.integer  "user_id"
+    t.boolean  "no_trade_exports"
+    t.boolean  "no_trade_imports"
   end
 
   create_table "tolk_locales", :force => true do |t|

@@ -1,6 +1,7 @@
 class Report < ActiveRecord::Base
   attr_accessible :year, :basis, :has_exports, :has_imports, :uploaded_exports_attributes,
-                  :uploaded_imports_attributes, :has_additional_information, :uploaded_additional_information_attributes, :user_id
+                  :uploaded_imports_attributes, :has_additional_information, :uploaded_additional_information_attributes, :user_id,
+                  :no_trade_exports, :no_trade_imports
 
   include EnumerateIt
   has_enumeration_for :basis, :with => CompilationBasis, :create_helpers => true
