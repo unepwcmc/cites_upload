@@ -10,6 +10,13 @@
   <dt><%=t('reports.show.basis')%>:</dt>
   <dd><%= @report.basis_humanize %></dd>
 
+  <dt><%= t('generic.submission_date') %></dt>
+  <dd><%= @report.created_at.strftime("%d/%m/%Y") %></dd>
+
+  <% if @report.updated_at != @report.created_at %>
+    <dt><%= t('generic.updated_at') %></dt>
+    <dd><%= @report.updated_at.strftime("%d/%m/%Y") %></dd>
+  <% end %>
 </dl>
 
 <p><strong><%=t('reports.show.exports')%></strong></p>
