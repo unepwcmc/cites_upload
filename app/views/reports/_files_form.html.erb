@@ -2,7 +2,7 @@
 <div class="clearfix">
   <% q_label = t("reports.form.has_#{pluralized}") %>
   <% if pluralized != "additional_information" %>
-    <% q_label = q_label +  "<span class='help-inline'>#{ link_to 'Sample report', '/assets/' + (file_type == 'imports' ? 'Sample_import_report.xlsx' : 'Sample_re_export_report.xlsx')}</span>" %>
+    <% q_label = q_label +  "<span class='help-inline'>#{ link_to 'Sample report', '/assets/' + (pluralized == 'imports' ? 'Sample_import_report.xlsx' : 'Sample_re_export_report.xlsx')}</span>" %>
   <% end %>
   <%= f.label "has_#{pluralized}", q_label.html_safe %>
   <div class="input">
@@ -10,6 +10,16 @@
     <label for="report_has_<%=pluralized%>_false" class="inline"><%= t('generic.word_no') %></label> <%= f.radio_button "has_#{pluralized}", false %>
   </div>
 </div>
+<% if pluralized != "additional_information" %>
+  <div class="clearfix <%= f.object.send("has_#{pluralized}?") || f.object.new_record? ? "hide" : ""%>">
+    <div class="input">
+      <label class="checkbox" for="report_no_trade_<%= pluralized %>">
+        No trade
+        <%= f.check_box "no_trade_#{pluralized}" %>
+      </label>
+    </div>
+  </div>
+<% end %>
 <div class='inset <%= f.object.send("has_#{pluralized}?") ? "" : "hide"%>' id="uploaded_<%= pluralized %>">
   <div class="uploaded_<%=pluralized%>">
     <%= f.fields_for "uploaded_#{pluralized}" do |file_form| %>
