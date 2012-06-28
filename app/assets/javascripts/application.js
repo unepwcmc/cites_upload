@@ -9,7 +9,7 @@
 //= require_tree .
 
 $(document).ready(function(){
-  if($("#new_report").length > 0){
+  if($("form.report-form").length > 0){
     hasFilesOrNot();
     confirmSubmission();
   }

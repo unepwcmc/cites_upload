@@ -36,7 +36,7 @@ function enableDisplayingSelectedFile(translatedText){
 
 function confirmSubmission(){
   $("#confirm_submission").modal({backdrop: 'static'});
-  $("#new_report").submit(function(event){
+  $("form.report-form").submit(function(event){
     event.preventDefault();
     fillInModalDetails();
     $("#confirm_submission").modal("show");
