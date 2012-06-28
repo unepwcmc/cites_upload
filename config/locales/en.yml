@@ -16,7 +16,8 @@ en:
     email: Email
     options: Options
     submission_date: "Submission date"
-    updated_at : "Last update"
+    updated_at: "Last update"
+    no_trade: "No trade occurred"
   layout:
     home: Home
     reports: Reports

@@ -59,8 +59,9 @@ function fillInModalDetails(){
   if($("#report_has_exports_false").is(':checked')){
     if($("#report_no_trade_exports").is(':checked')){
       $("#confirm_exports").append("<li>No trade occurred</li>");
+    }else {
+      $("#confirm_exports").append("<li>No export files were added.</li>");
     }
-    $("#confirm_exports").append("<li>No export files were added.</li>");
   }else{
     $("#uploaded_exports").find('.upload_file').each(function(){
       if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
@@ -75,8 +76,9 @@ function fillInModalDetails(){
   if($("#report_has_imports_false").is(':checked')){
     if($("#report_no_trade_imports").is(':checked')){
       $("#confirm_imports").append("<li>No trade occurred</li>");
+    } else {
+      $("#confirm_imports").append("<li>No import files were added.</li>");
     }
-    $("#confirm_imports").append("<li>No import files were added.</li>");
   }else{
     $("#uploaded_imports").find('.upload_file').each(function(){
       if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){

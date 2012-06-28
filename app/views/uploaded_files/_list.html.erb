@@ -10,6 +10,12 @@
   </p>
 <% else %>
   <% if !index %>
-    <p><%=t("reports.show.no_#{file_type}")%></p>
+    <p>
+      <% if file_type != "additional_information" && report.send("no_trade_#{file_type}") %>
+        <%= t('generic.no_trade') %>
+      <% else %>
+        <%=t("reports.show.no_#{file_type}")%>
+      <% end %>
+    </p>
   <% end %>
 <% end %>
