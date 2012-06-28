@@ -77,8 +77,18 @@ desc 'Generate s3_storage.yml file'
 task :generate_s3_storage do
   s3_access_key = Capistrano::CLI.ui.ask("Enter your S3 access key:")
   s3_secret_access_key = Capistrano::CLI.ui.ask("Enter your S3 secret access key:")
-  template = File.read("config/deploy/s3_storage.yml.erb")
+  template = File.read("config/deploy/templates/s3_storage.yml.erb")
   buffer = ERB.new(template).result(binding)
   put buffer, "#{shared_path}/config/s3_storage.yml"
 end
 after "deploy:setup", :generate_s3_storage
+
+desc 'Generate setup_mail.rb file'
+task :setup_mail do
+  address = Capistrano::CLI.ui.ask("Enter the smtp mail address:")
+  pwd = Capistrano::CLI.ui.ask("Enter the smtp user password:")
+  template = File.read("config/deploy/templates/setup_mail.rb.erb")
+  buffer = ERB.new(template).result(binding)
+  put buffer, "#{shared_path}/config/initializers/setup_mail.rb"
+end
+after "deploy:setup", :setup_mail
