@@ -57,6 +57,9 @@ function fillInModalDetails(){
   $("#confirm_basis").html($("#report_basis option:selected").text());
   $("#confirm_exports").empty();
   if($("#report_has_exports_false").is(':checked')){
+    if($("#report_no_trade_exports").is(':checked')){
+      $("#confirm_exports").append("<li>No trade occurred</li>");
+    }
     $("#confirm_exports").append("<li>No export files were added.</li>");
   }else{
     $("#uploaded_exports").find('.upload_file').each(function(){
@@ -70,6 +73,9 @@ function fillInModalDetails(){
   }
   $("#confirm_imports").empty();
   if($("#report_has_imports_false").is(':checked')){
+    if($("#report_no_trade_imports").is(':checked')){
+      $("#confirm_imports").append("<li>No trade occurred</li>");
+    }
     $("#confirm_imports").append("<li>No import files were added.</li>");
   }else{
     $("#uploaded_imports").find('.upload_file').each(function(){
@@ -96,3 +102,29 @@ function fillInModalDetails(){
   }
 }
 
+function hasFilesOrNot(){
+  $("input[type=radio]").change(function(){
+    if(this.value == "true"){
+      //hide no trade if present
+      $(this).parents('.clearfix').nextAll('.no_trade').hide('slow');
+      //remove tick from no trade checkbox
+      $(this).parents('.clearfix').nextAll('.no_trade').find('input').attr('checked', false);
+      //show files controls
+      $(this).parents('.clearfix').nextAll('.files_control').show('slow');
+      //change the documents that were marked to be removed by the user interaction with Yes or No question.
+      $(this).parents('.clearfix').nextAll('.files_control').find('.to_be_removed').each(function(){
+        $(this).val("0").removeClass("to_be_removed");
+      });
+    } else{
+      $(this).parents('.clearfix').nextAll('.no_trade').show('slow');
+      $(this).parents('.clearfix').nextAll('.files_control').hide('slow');
+      //Mark all the documents of this type to be destroyed, unless they are already marked for destruction.
+      $(this).parents('.clearfix').nextAll('.files_control').find("input[type=hidden]").each(function(){
+        if($(this).val() != "1"){
+          $(this).addClass("to_be_removed");
+          $(this).val("1");
+        }
+      });
+    }
+  });
+}

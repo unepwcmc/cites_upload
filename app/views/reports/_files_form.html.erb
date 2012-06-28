@@ -2,7 +2,7 @@
 <div class="clearfix">
   <% q_label = t("reports.form.has_#{pluralized}") %>
   <% if pluralized != "additional_information" %>
-    <% q_label = q_label +  "<span class='help-inline'>#{ link_to 'Sample report', '/assets/' + (pluralized == 'imports' ? 'Sample_import_report.xlsx' : 'Sample_re_export_report.xlsx')}</span>" %>
+    <% q_label = q_label +  "<span class='help-inline'>#{ link_to "Sample #{file_type == 'import' ? file_type : '(re-)export'} report", '/assets/' + (file_type == 'import' ? 'Sample_import_report.xlsx' : 'Sample_re_export_report.xlsx')}</span>" %>
   <% end %>
   <%= f.label "has_#{pluralized}", q_label.html_safe %>
   <div class="input">
@@ -11,20 +11,20 @@
   </div>
 </div>
 <% if pluralized != "additional_information" %>
-  <div class="clearfix <%= f.object.send("has_#{pluralized}?") || f.object.new_record? ? "hide" : ""%>">
+  <div class="no_trade clearfix <%= f.object.send("has_#{pluralized}?") || f.object.new_record? ? "hide" : ""%>">
     <div class="input">
       <label class="checkbox" for="report_no_trade_<%= pluralized %>">
-        No trade
+        No trade occurred
         <%= f.check_box "no_trade_#{pluralized}" %>
       </label>
     </div>
   </div>
 <% end %>
-<div class='inset <%= f.object.send("has_#{pluralized}?") ? "" : "hide"%>' id="uploaded_<%= pluralized %>">
+<div class='files_control inset <%= f.object.send("has_#{pluralized}?") ? "" : "hide"%>' id="uploaded_<%= pluralized %>">
   <div class="uploaded_<%=pluralized%>">
     <%= f.fields_for "uploaded_#{pluralized}" do |file_form| %>
       <%= render :partial => 'uploaded_files/uploaded_file_fields', :locals => { :f => file_form } %>
     <% end %>
   </div>
+  <%= link_to_add_fields t('reports.form.add_file'), f, "uploaded_#{pluralized}".to_sym, "FileTypes::#{file_type.underscore.upcase}".constantize %><br />
 </div>
-<%= link_to_add_fields t('reports.form.add_file'), f, "uploaded_#{pluralized}".to_sym, "FileTypes::#{file_type.underscore.upcase}".constantize, report.new_record? %><br />
