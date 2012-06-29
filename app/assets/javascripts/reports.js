@@ -44,7 +44,9 @@ function confirmSubmission(){
   $("#cancel").click(function(e){
     e.preventDefault();
     $("#confirm_submission").modal("hide");
-    });
+    $("#do_submit").show();
+    $("#confirmation_warning").hide();
+  });
   $("#do_submit").click(function(e){
     e.preventDefault();
     $("#new_report").unbind("submit");
@@ -62,15 +64,21 @@ function fillInModalDetails(){
     }else {
       $("#confirm_exports").append("<li>No export files were added.</li>");
     }
-  }else{
+  }else if($("#report_has_exports_true").is(':checked')){
     $("#uploaded_exports").find('.upload_file').each(function(){
       if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
         $("#confirm_exports").append("<li>"+$(this).val()+"</li>");
       }
     });
     if($("#confirm_exports").children('li').length === 0){
-      $("#confirm_exports").append("<li>No export files were added.</li>");
+      $("#confirm_exports").append("<li>No export files were added. <span class='warning'>Please add a file or select 'No' if you do not have any files to upload.</span></li>");
+      $("#do_submit").hide();
+      $("#confirmation_warning").show();
     }
+  }else {
+    $("#confirm_exports").append("<li><span class='warning'>Please select one option ('Yes' or 'No').</span></li>");
+    $("#do_submit").hide();
+    $("#confirmation_warning").show();
   }
   $("#confirm_imports").empty();
   if($("#report_has_imports_false").is(':checked')){
@@ -79,15 +87,21 @@ function fillInModalDetails(){
     } else {
       $("#confirm_imports").append("<li>No import files were added.</li>");
     }
-  }else{
+  }else if($("#report_has_imports_true").is(':checked')){
     $("#uploaded_imports").find('.upload_file').each(function(){
       if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
         $("#confirm_imports").append("<li>"+$(this).val()+"</li>");
       }
     });
     if($("#confirm_imports").children('li').length === 0){
-      $("#confirm_imports").append("<li>No import files were added.</li>");
+      $("#confirm_imports").append("<li>No import files were added. <span class='warning'>Please add a file or select 'No' if you do not have any files to upload.</span></li>");
+      $("#do_submit").hide();
+      $("#confirmation_warning").show();
     }
+  } else {
+    $("#confirm_imports").append("<li><span class='warning'>Please select one option ('Yes' or 'No').</span></li>");
+    $("#do_submit").hide();
+    $("#confirmation_warning").show();
   }
   $("#confirm_additional_information").empty();
   if($("#report_has_additional_information_false").is(':checked')){

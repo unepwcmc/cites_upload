@@ -56,3 +56,8 @@ footer span {
   display: block;
   float: left;
 }
+
+span.warning {
+  font-weight: bold;
+  color: fireBrick;
+}
