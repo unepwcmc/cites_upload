@@ -58,7 +58,10 @@
   </div>
 <% end %>
 <%= render "confirm_submission" %>
+<%= render "existing_report" %>
 <script type="text/javascript">
+  var CURRENT_USER = "<%= current_user.id %>";
+  var CURRENT_REPORT = <%= @report.new_record? ? "-1" : @report.id %>;
   $(function(){
       enableDisplayingSelectedFile("<%= t('reports.form.file_chosen') %>");
   });

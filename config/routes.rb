@@ -10,6 +10,7 @@ CitesUpload::Application.routes.draw do
       member do
         put :approve
         put :disapprove
+        get :has_report
       end
     end
     resources :admins

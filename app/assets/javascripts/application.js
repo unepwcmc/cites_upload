@@ -12,6 +12,7 @@ $(document).ready(function(){
   if($("form.report-form").length > 0){
     hasFilesOrNot();
     confirmSubmission();
+    existingReport();
   }
   //autoclose flash messages
   setTimeout(function() { 

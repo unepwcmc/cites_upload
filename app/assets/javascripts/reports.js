@@ -38,9 +38,9 @@ function confirmSubmission(){
   $("#confirm_submission").modal({backdrop: 'static'});
   $("form.report-form").submit(function(event){
     event.preventDefault();
-    fillInModalDetails();
-    $("#confirm_submission").modal("show");
-    });
+    var year = $("#report_year").val();
+    checkReportExists(year, true);
+  });
   $("#cancel").click(function(e){
     e.preventDefault();
     $("#confirm_submission").modal("hide");
@@ -129,4 +129,37 @@ function hasFilesOrNot(){
       });
     }
   });
+}
+
+function existingReport(){
+  $("#existing_report").modal({backdrop: 'static'});
+  $("#existing_report_cancel").click(function(e){
+    e.preventDefault();
+    $("#existing_report").modal('hide');
+  });
+  $("#report_year").change(function(){
+    var year = $(this).val();
+    checkReportExists(year, false);
+  });
+}
+
+function checkReportExists(year, submission){
+  var result;
+  $.ajax({
+    url: '/users/'+CURRENT_USER+'/has_report',
+    data: {year: year},
+    dataType: 'json',
+    success: function(report_id){
+      if(report_id !== -1 && report_id !== CURRENT_REPORT){
+        $("#existing_report_year").text(year);
+        $("#edit_existing").attr("href", '/reports/'+report_id+'/edit');
+        $("#existing_report").modal('show');
+      } else if(submission){
+        fillInModalDetails();
+        $("#confirm_submission").modal("show");
+      }
+      result = report_id;
+    }
+  });
+  return result;
 }

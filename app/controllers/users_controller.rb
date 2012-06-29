@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   skip_before_filter :authenticate, :except => [:show]
-  before_filter :authenticate_admin!, :except => [:show]
+  before_filter :authenticate_admin!, :except => [:show, :has_report]
 
   def index
     @waiting = User.where(:approved => false).order(:created_at)
@@ -34,5 +34,11 @@ class UsersController < ApplicationController
         format.js
       end
     end
+  end
+
+  def has_report
+    user = current_user
+    result = params[:year].present? ? user.reports.where(:year => params[:year]).first.try(:id) || -1  : -1
+    render :json => result
   end
 end
