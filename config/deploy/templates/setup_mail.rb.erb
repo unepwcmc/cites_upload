@@ -2,10 +2,10 @@ ActionMailer::Base.delivery_method = :smtp
 
 ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true,
-  :address => "<%= mail_address %>",
+  :address => "<%= address %>",
   :port => 587,
   :domain => "unep-wcmc.org",
   :authentication => :login,
   :user_name => 'no-reply@unep-wcmc.org',
-  :password => '<%= mail_password %>'
+  :password => '<%= pwd %>'
 }
