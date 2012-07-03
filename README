@@ -1,1 +1,14 @@
 == Welcome to CITES Annual Report Upload Facility
+
+=> Translations
+  - Locales are maintained with Tolk (https://github.com/tolk/tolk)
+
+=> Servers
+  - Staging: 005
+  - Production: 004
+
+=> Project for: CITES
+
+=> Project Manager: Kelly Malsch (kelly.malsch@unep-wcmc.org)
+
+=> Main Developer: Simão Belchior (simao.belchior@unep-wcmc.org)
