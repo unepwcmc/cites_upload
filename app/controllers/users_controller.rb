@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.includes(:reports).find(params[:id])
-    @reports = @user.reports.order("year DESC")
+    @reports = Report.order('year DESC').joins(:user).where(:users => {:country_id => @user.country_id})
   end
 
   def approve
