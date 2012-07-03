@@ -5,10 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :approved, :name, :country
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :approved, :name, :country_id
   validates_presence_of :country
 
   has_many :reports
+  belongs_to :country
   scope :approved, where(:approved => true).order(:country)
 
   def active_for_authentication?
