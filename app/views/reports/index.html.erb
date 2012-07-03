@@ -18,7 +18,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user.country, user %></td>
+        <td><%= link_to user.country.name, user %></td>
         <% (@min_year..@max_year).each do |year| %>
           <% report = user.reports.where(:year => year).first %>
           <td>

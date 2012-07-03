@@ -16,7 +16,7 @@
     <div class="clearfix">
       <%= f.label :country, t('generic.country') %>
       <div class="input">
-        <%= f.select :country, Countries::LIST_OF_COUNTRIES %>
+        <%= f.select :country, Country.order(:name) %>
       </div>
     </div>
     <div class="clearfix">
