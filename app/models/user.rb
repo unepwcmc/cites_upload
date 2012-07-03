@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :reports
   belongs_to :country
-  scope :approved, where(:approved => true).order(:country)
+  scope :approved, where(:approved => true).joins(:country).order('countries.name ASC')
 
   def active_for_authentication?
     super && approved?

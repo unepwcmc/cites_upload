@@ -14,9 +14,9 @@
       </div>
     </div>
     <div class="clearfix">
-      <%= f.label :country, t('generic.country') %>
+      <%= f.label :country_id, t('generic.country') %>
       <div class="input">
-        <%= f.select :country, options_from_collection_for_select(Country.order(:name), :id, :name) %>
+        <%= f.select :country_id, options_from_collection_for_select(Country.order(:name), :id, :name) %>
       </div>
     </div>
     <div class="clearfix">
