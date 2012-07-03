@@ -49,8 +49,9 @@ function confirmSubmission(){
   });
   $("#do_submit").click(function(e){
     e.preventDefault();
-    $("#new_report").unbind("submit");
-    $("#new_report").submit();
+    $(this).unbind('click');
+    $("form.report-form").unbind("submit");
+    $("form.report-form").submit();
   });
 }
 

@@ -28,6 +28,6 @@
 <p><strong><%=t('reports.show.additional_information')%></strong></p>
 <%= render :partial => "uploaded_files/list", :locals => {:report => @report, :file_type => "additional_information"} %>
 
-<% if current_user && current_user == @report.user %>
+<% if current_user && ( current_user == @report.user || current_user.country_id == @report.user.country_id )%>
   <p><%= link_to "Amend", edit_report_path(@report), :class => "btn success" %></p>
 <% end %>

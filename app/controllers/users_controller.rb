@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   def has_report
     user = current_user
-    result = params[:year].present? ? user.reports.where(:year => params[:year]).first.try(:id) || -1  : -1
+    result = params[:year].present? ? Report.joins(:user).where(:year => params[:year], :users => {:country_id => current_user.country_id}).first.try(:id) || -1  : -1
     render :json => result
   end
 end
