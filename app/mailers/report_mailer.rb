@@ -11,6 +11,6 @@ class ReportMailer < ActionMailer::Base
     @report = report
     @user = report.user
     @url = url
-    mail(:to => Admin.all.map{|a| "#{a.name} <#{a.email}>"}.join(','), :subject => "[CITES Upload] #{@user.country.name} Annual Report Submitted")
+    mail(:to => Admin.where(:receive_emails => true).map{|a| "#{a.name} <#{a.email}>"}.join(','), :subject => "[CITES Upload] #{@user.country.name} Annual Report Submitted")
   end
 end

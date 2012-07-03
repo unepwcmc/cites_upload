@@ -27,6 +27,12 @@
       </div>
     </div>
     <div class="clearfix">
+      <%= f.label :receive_emails %>
+      <div class="input">
+        <%= f.check_box :receive_emails %>
+      </div>
+    </div>
+    <div class="clearfix">
       <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
       <div class="input">
         <%= f.password_field :password, :autocomplete => "off" %>

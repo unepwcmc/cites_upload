@@ -20,13 +20,13 @@
       </div>
     </div>
     <div class="clearfix">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+      <%= f.label :password, "New password" %> <i>(leave blank if you don't want to change it)</i>
       <div class="input">
         <%= f.password_field :password, :autocomplete => "off" %>
       </div>
     </div>
     <div class="clearfix">
-      <%= f.label :password_confirmation %> <i>(we need your current password to confirm your changes)</i>
+      <%= f.label :password_confirmation, "New password confirmation" %> <i>(we need your current password to confirm your changes)</i>
       <div class="input">
         <%= f.password_field :password_confirmation %>
       </div>
