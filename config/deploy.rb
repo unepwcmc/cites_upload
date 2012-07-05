@@ -9,7 +9,7 @@ require 'brightbox/passenger'
 load 'deploy/assets'
 # The name of your application.  Used for deployment directory and filenames
 # and Apache configs. Should be unique on the Brightbox
-set :application, "cites_upload"
+set :application, "cites-upload"
 set :rake, "bundle exec rake"
 
 
