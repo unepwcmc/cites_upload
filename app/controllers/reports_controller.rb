@@ -24,10 +24,13 @@ class ReportsController < ApplicationController
   # GET /reports/1.json
   def show
     @report = Report.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @report }
+    if !current_admin && current_user.country_id != @report.user.country_id
+      redirect_to @report.user, :alert => "You are not authorized to access that report"
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render :json => @report }
+      end
     end
   end
 
@@ -52,6 +55,9 @@ class ReportsController < ApplicationController
     @report.uploaded_exports.build(:file_type => FileTypes::EXPORT) if !@report.uploaded_exports.any?
     @report.uploaded_imports.build(:file_type => FileTypes::IMPORT) if !@report.uploaded_imports.any?
     @report.uploaded_additional_information.build(:file_type => FileTypes::ADDITIONAL_INFORMATION) if !@report.uploaded_additional_information.any?
+    if current_user.country_id != @report.user.country_id
+      redirect_to current_user, :alert => "You are not authorized to access that report"
+    end
   end
 
   # POST /reports
@@ -79,13 +85,17 @@ class ReportsController < ApplicationController
   def update
     @report = Report.find(params[:id])
 
-    respond_to do |format|
-      if @report.update_attributes(params[:report])
-        format.html { redirect_to @report, :notice => 'Report was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.json { render :json => @report.errors, :status => :unprocessable_entity }
+    if current_user.country_id != @report.user.country_id
+      redirect_to current_user, :alert => "You are not authorized to access that report"
+    else
+      respond_to do |format|
+        if @report.update_attributes(params[:report])
+          format.html { redirect_to @report, :notice => 'Report was successfully updated.' }
+          format.json { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.json { render :json => @report.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end

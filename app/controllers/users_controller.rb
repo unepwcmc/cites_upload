@@ -11,6 +11,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.includes(:reports).find(params[:id])
+    if !current_admin && current_user != @user
+      redirect_to current_user, :alert => 'You are not authorized to access that page'
+    end
     @reports = Report.order('year DESC').joins(:user).where(:users => {:country_id => @user.country_id})
   end
 
