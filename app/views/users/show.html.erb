@@ -11,7 +11,9 @@
       <th><%=t('reports.show.imports')%></th>
       <th><%=t('reports.show.additional_information')%></th>
       <th><%=t('reports.show.submission_date')%></th>
-      <th></th>
+      <% if current_user == @user || current_user.country_id = @user.country_id %>
+        <th></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -29,7 +31,9 @@
           <%= render :partial => "uploaded_files/list", :locals => {:report => report, :file_type => "additional_information"} %>
         </td>
         <td><%= report.created_at.strftime("%d/%m/%Y") %></td>
-        <td><%= link_to "Amend", edit_report_path(report), :class => "btn success" %></td>
+        <% if current_user == @user || current_user.country_id = @user.country_id %>
+          <td><%= link_to "Amend", edit_report_path(report), :class => "btn success" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
