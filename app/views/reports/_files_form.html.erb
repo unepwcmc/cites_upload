@@ -14,7 +14,7 @@
   <div class="no_trade clearfix <%= f.object.send("has_#{pluralized}?") || f.object.new_record? ? "hide" : ""%>">
     <div class="input">
       <label class="checkbox" for="report_no_trade_<%= pluralized %>">
-        No trade occurred
+        No trade occurred <a href='#' data-placement='below' rel='twipsy' title='<%=t('tooltips.no_trade')%>' class='tooltips'><%=image_tag('tooltip.gif')%></a>
         <%= f.check_box "no_trade_#{pluralized}" %>
       </label>
     </div>
