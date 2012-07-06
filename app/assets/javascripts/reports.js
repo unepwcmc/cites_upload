@@ -71,7 +71,7 @@ function fillInModalDetails(){
     $("#uploaded_exports").find('.upload_file').each(function(){
       if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
         strName = objRE.exec($(this).val());
-        $("#confirm_exports").append("<li>"+strName+"</li>");
+        $("#confirm_exports").append("<li>"+strName[1]+"</li>");
       }
     });
     if($("#confirm_exports").children('li').length === 0){
@@ -95,7 +95,7 @@ function fillInModalDetails(){
     $("#uploaded_imports").find('.upload_file').each(function(){
       if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
         strName = objRE.exec($(this).val());
-        $("#confirm_imports").append("<li>"+strName+"</li>");
+        $("#confirm_imports").append("<li>"+strName[1]+"</li>");
       }
     });
     if($("#confirm_imports").children('li').length === 0){
@@ -115,7 +115,7 @@ function fillInModalDetails(){
     $("#uploaded_additional_information").find('.upload_file').each(function(){
       if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
         strName = objRE.exec($(this).val());
-        $("#confirm_additional_information").append("<li>"+strName+"</li>");
+        $("#confirm_additional_information").append("<li>"+strName[1]+"</li>");
       }
     });
     if($("#confirm_additional_information").children('li').length === 0){
