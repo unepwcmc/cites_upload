@@ -58,6 +58,8 @@ function confirmSubmission(){
 function fillInModalDetails(){
   $("#confirm_year").html($("#report_year option:selected").text());
   $("#confirm_basis").html($("#report_basis option:selected").text());
+  var objRE = new RegExp(/([^\/\\]+)$/);
+  var strName = '';
   $("#confirm_exports").empty();
   if($("#report_has_exports_false").is(':checked')){
     if($("#report_no_trade_exports").is(':checked')){
@@ -68,7 +70,8 @@ function fillInModalDetails(){
   }else if($("#report_has_exports_true").is(':checked')){
     $("#uploaded_exports").find('.upload_file').each(function(){
       if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
-        $("#confirm_exports").append("<li>"+$(this).val()+"</li>");
+        strName = objRE.exec($(this).val());
+        $("#confirm_exports").append("<li>"+strName+"</li>");
       }
     });
     if($("#confirm_exports").children('li').length === 0){
@@ -91,7 +94,8 @@ function fillInModalDetails(){
   }else if($("#report_has_imports_true").is(':checked')){
     $("#uploaded_imports").find('.upload_file').each(function(){
       if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
-        $("#confirm_imports").append("<li>"+$(this).val()+"</li>");
+        strName = objRE.exec($(this).val());
+        $("#confirm_imports").append("<li>"+strName+"</li>");
       }
     });
     if($("#confirm_imports").children('li').length === 0){
@@ -110,7 +114,8 @@ function fillInModalDetails(){
   }else{
     $("#uploaded_additional_information").find('.upload_file').each(function(){
       if($(this).nextAll('input[type=hidden]').val()!=="1" && $(this).val() !== ""){
-        $("#confirm_additional_information").append("<li>"+$(this).val()+"</li>");
+        strName = objRE.exec($(this).val());
+        $("#confirm_additional_information").append("<li>"+strName+"</li>");
       }
     });
     if($("#confirm_additional_information").children('li').length === 0){
