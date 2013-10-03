@@ -74,10 +74,6 @@ function fillInModalDetails(){
         $("#confirm_exports").append("<li>"+strName[1]+"</li>");
       }
     });
-    $("#uploaded_exports").find('.uploaded_file').each(function(){
-      strName = objRE.exec($(this).find('a').html());
-      $("#confirm_exports").append("<li>"+strName[1]+"</li>");
-    });
     if($("#confirm_exports").children('li').length === 0){
       $("#confirm_exports").append("<li>No export files were added. <span class='warning'>Please add a file or select 'No' if you do not have any files to upload.</span></li>");
       $("#do_submit").hide();
