@@ -1,7 +1,7 @@
 set :stage, :production
 
-server "web-production.linode.unep-wcmc.org", user: 'wcmc', roles: %w{app web}
-server "db-production.linode.unep-wcmc.org", user: 'wcmc', roles: %w{db}, no_release: true
+server "web-production.linode.unep-wcmc.org", user: 'wcmc', roles: %w{app web db}
+server "db-production.linode.unep-wcmc.org", user: 'wcmc', roles: %w{bkp}, no_release: true
 
 set :application, "cites_upload"
 set :server_name, "cites_upload.web-production.linode.unep-wcmc.org"
