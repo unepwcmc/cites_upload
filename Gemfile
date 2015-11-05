@@ -7,7 +7,7 @@ gem 'rails', '3.2.22'
 
 gem 'pg'
 gem 'enumerate_it'
-gem 'paperclip', '~> 2.4'
+gem 'paperclip'
 #gem 'aws-s3'
 gem 'aws-sdk'
 gem 'devise'
