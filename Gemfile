@@ -28,10 +28,14 @@ gem 'tolk'#, :git => 'git://github.com/panva/tolk.git', :branch => 'master'
 # Use unicorn as the web server
 # gem 'unicorn'
 
-# Deploy with Capistrano
-gem 'capistrano'
-gem 'brightbox'
-gem 'capistrano-ext'
+group :development do
+  gem 'capistrano-rvm',   '~> 0.1', require: false
+  gem 'capistrano', '~> 3.4.0', require: false
+  gem 'capistrano-rails',   '~> 1.1', require: false
+  gem 'capistrano-bundler', '~> 1.1', require: false
+  gem 'capistrano-passenger', '~> 0.1.1', require: false
+end
+
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
