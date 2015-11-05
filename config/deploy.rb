@@ -53,7 +53,7 @@ default_run_options[:pty] = true # Must be set for the password prompt from git 
 #
 # The shared area is prepared with 'deploy:setup' and all the shared
 # items are symlinked in when the code is updated.
-set :local_shared_files, %w(config/database.yml config/s3_storage.yml config/initializers/setup_mail.rb)
+set :local_shared_files, %w(config/database.yml)
 set :local_shared_dirs, %w(public/system)
 
 task :setup_production_database_configuration do
@@ -73,25 +73,18 @@ task :setup_production_database_configuration do
 end
 after "deploy:setup", :setup_production_database_configuration
 
-desc 'Generate s3_storage.yml file'
-task :generate_s3_storage do
-  s3_access_key = Capistrano::CLI.ui.ask("Enter your S3 access key:")
-  s3_secret_access_key = Capistrano::CLI.ui.ask("Enter your S3 secret access key:")
-  template = File.read("config/deploy/templates/s3_storage.yml.erb")
-  buffer = ERB.new(template).result(binding)
-  put buffer, "#{shared_path}/config/s3_storage.yml"
-end
-after "deploy:setup", :generate_s3_storage
 
-desc 'Generate setup_mail.rb file'
-task :setup_mail do
-  address = Capistrano::CLI.ui.ask("Enter the smtp mail address:")
-  pwd = Capistrano::CLI.ui.ask("Enter the smtp user password:")
-  template = File.read("config/deploy/templates/setup_mail.rb.erb")
-  buffer = ERB.new(template).result(binding)
-  put buffer, "#{shared_path}/config/initializers/setup_mail.rb"
-end
-after "deploy:setup", :setup_mail
+# TODO: got rid of s3_storage.yml and setup_mail.rb - those values should go into .env file
+# SECRET_KEY_BASE
+# AWS_ACCESS_KEY_ID
+# AWS_SECRET_ACCESS_KEY
+# MAILER_ADDRESS_KEY
+# MAILER_PORT_KEY
+# MAILER_DOMAIN_KEY
+# MAILER_USERNAME_KEY
+# MAILER_PASSWORD_KEY
+# MAILER_ASSET_HOST_KEY
+# MAILER_HOST_KEY
 
 # got sick of "gem X not found in any of the sources" when using the default whenever recipe
 # probable source of issue:
