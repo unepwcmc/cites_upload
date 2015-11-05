@@ -44,8 +44,10 @@ end
 gem 'bootstrap-generators', '~>1.0.1'
 group :development do
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
-  gem 'ruby-debug19'
+  gem 'byebug'
 end
 
 gem 'dotenv-rails'
 gem 'rails-secrets'
+
+gem 'test-unit', '~> 3.1' # annoyingly, rails console won't start without it in staging / production
