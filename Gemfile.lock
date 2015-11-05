@@ -133,7 +133,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (0.8.7)
+    rake (10.4.2)
     rdoc (3.12.2)
       json (~> 1.4)
     ruby-debug-base19 (0.11.25)
@@ -190,7 +190,6 @@ DEPENDENCIES
   rails (= 3.2.22)
   rails-i18n
   rails-secrets
-  rake (= 0.8.7)
   ruby-debug19
   tolk
   turn (~> 0.8.3)
