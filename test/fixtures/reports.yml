@@ -1,16 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  country: MyString
   year: 1
   basis: 1
-  contact_details: MyString
+  user: one
 
-two:
-  country: MyString
-  year: 1
-  basis: 1
-  contact_details: MyString
 # == Schema Information
 #
 # Table name: reports

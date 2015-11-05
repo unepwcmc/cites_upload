@@ -1,14 +1,16 @@
 require 'test_helper'
 
 class ReportsControllerTest < ActionController::TestCase
+
   setup do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in users(:one)
     @report = reports(:one)
   end
 
   test "should get index" do
     get :index
-    assert_response :success
-    assert_not_nil assigns(:reports)
+    assert_redirected_to user_path(users(:one))
   end
 
   test "should get new" do
@@ -18,10 +20,9 @@ class ReportsControllerTest < ActionController::TestCase
 
   test "should create report" do
     assert_difference('Report.count') do
-      post :create, report: @report.attributes
+      post :create, report: {year: 2015}
     end
-
-    assert_redirected_to report_path(assigns(:report))
+    assert_redirected_to user_path(users(:one))
   end
 
   test "should show report" do
@@ -35,8 +36,8 @@ class ReportsControllerTest < ActionController::TestCase
   end
 
   test "should update report" do
-    put :update, id: @report.to_param, report: @report.attributes
-    assert_redirected_to report_path(assigns(:report))
+    put :update, id: @report.to_param, report: {year: 2015}
+    assert_redirected_to report_path(@report)
   end
 
   test "should destroy report" do
