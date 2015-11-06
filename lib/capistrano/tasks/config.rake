@@ -1,10 +1,10 @@
 namespace :config do
   task :setup do
-   ask(:db_user, 'db_user')
-   ask(:db_pass, 'db_pass')
-   ask(:db_name, 'db_name')
-   ask(:db_host, 'db_host')
-setup_config = <<-EOF
+    ask(:db_user, 'db_user')
+    ask(:db_pass, 'db_pass')
+    ask(:db_name, 'db_name')
+    ask(:db_host, 'db_host')
+    setup_config = <<-EOF
 #{fetch(:rails_env)}:
 adapter: postgresql
 database: #{fetch(:db_name)}
@@ -12,9 +12,9 @@ username: #{fetch(:db_user)}
 password: #{fetch(:db_pass)}
 host: #{fetch(:db_host)}
 EOF
-  on roles(:app) do
-     execute "mkdir -p #{shared_path}/config"
-     upload! StringIO.new(setup_config), "#{shared_path}/config/database.yml"
+    on roles(:app) do
+      execute "mkdir -p #{shared_path}/config"
+      upload! StringIO.new(setup_config), "#{shared_path}/config/database.yml"
     end
   end
 end
@@ -24,7 +24,7 @@ namespace :config do
     ask(:SECRET_KEY_BASE, 'SECRET_KEY_BASE')
     ask(:AWS_ACCESS_KEY_ID, 'AWS_ACCESS_KEY_ID')
     ask(:AWS_SECRET_ACCESS_KEY, 'AWS_SECRET_ACCESS_KEY')
-env_config = <<-EOF
+    env_config = <<-EOF
 SECRET_KEY_BASE=#{fetch(:SECRET_KEY_BASE)}
 AWS_ACCESS_KEY_ID=#{fetch(:AWS_ACCESS_KEY_ID)}
 AWS_SECRET_ACCESS_KEY=#{fetch(:AWS_SECRET_ACCESS_KEY)}
@@ -37,60 +37,58 @@ EOF
 end
 
 namespace :config do
-task :setup do
-vhost_config = <<-EOF
+  task :setup do
+    vhost_config = <<-EOF
 server {
-   listen 80;
-   server_name #{fetch(:application)}.#{fetch(:server)};
-   passenger_enabled on;
-   root #{deploy_to}/current/public;
-   rails_env #{fetch(:rails_env)};
-   client_max_body_size 20M;
-   passenger_ruby /home/#{fetch(:deploy_user)}/.rvm/gems/ruby-#{fetch(:rvm_ruby_version)}/wrappers/ruby;
-   gzip on;
-   location ~ ^/assets/ {
-   root #{deploy_to}/current/public;
-   expires max;
-   add_header Cache-Control public;
-   add_header ETag "";
-   break;
- }
-error_page 503 @503;
-# Return a 503 error if the maintenance page exists.
-if (-f #{deploy_to}shared/public/system/maintenance.html) {
-  return 503;
-}
-location @503 {
-  # Serve static assets if found.
-  if (-f $request_filename) {
+  listen 80;
+  server_name #{fetch(:application)}.#{fetch(:server)};
+  passenger_enabled on;
+  root #{deploy_to}/current/public;
+  rails_env #{fetch(:rails_env)};
+  client_max_body_size 20M;
+  passenger_ruby /home/#{fetch(:deploy_user)}/.rvm/gems/ruby-#{fetch(:rvm_ruby_version)}/wrappers/ruby;
+  gzip on;
+  location ~ ^/assets/ {
+    root #{deploy_to}/current/public;
+    expires max;
+    add_header Cache-Control public;
+    add_header ETag "";
     break;
   }
-  # Set root to the shared directory.
-  root #{deploy_to}/shared/public;
-  rewrite ^(.*)$ /system/maintenance.html break;
-}
-  
-  
+  error_page 503 @503;
+  # Return a 503 error if the maintenance page exists.
+  if (-f #{deploy_to}shared/public/system/maintenance.html) {
+    return 503;
+  }
+  location @503 {
+    # Serve static assets if found.
+    if (-f $request_filename) {
+      break;
+    }
+    # Set root to the shared directory.
+    root #{deploy_to}/shared/public;
+    rewrite ^(.*)$ /system/maintenance.html break;
+  }
 }
 EOF
 
-  on roles(:app) do
-     execute "sudo mkdir -p /etc/nginx/sites-available"
-     upload! StringIO.new(vhost_config), "/tmp/vhost_config"
-     execute "sudo mv /tmp/vhost_config /etc/nginx/sites-available/#{fetch(:application)}"
-     execute "sudo ln -s /etc/nginx/sites-available/#{fetch(:application)} /etc/nginx/sites-enabled/#{fetch(:application)}"
+    on roles(:app) do
+      execute "sudo mkdir -p /etc/nginx/sites-available"
+      upload! StringIO.new(vhost_config), "/tmp/vhost_config"
+      execute "sudo mv /tmp/vhost_config /etc/nginx/sites-available/#{fetch(:application)}"
+      execute "sudo ln -s /etc/nginx/sites-available/#{fetch(:application)} /etc/nginx/sites-enabled/#{fetch(:application)}"
     end
   end
 end
 
 namespace :config do
-task :setup do
-  ask(:s3_access_key_id, 's3_access_key_id')
-  ask(:s3_secret_access_key, 's3_secret_access_key')
-  ask(:s3_bucket, 's3_bucket')
-  ask(:mail_server, 'mail_server')
-  backup_config_db = <<-EOF
-#  encoding: utf-8
+  task :setup do
+    ask(:s3_access_key_id, 's3_access_key_id')
+    ask(:s3_secret_access_key, 's3_secret_access_key')
+    ask(:s3_bucket, 's3_bucket')
+    ask(:mail_server, 'mail_server')
+    backup_config_db = <<-EOF
+# encoding: utf-8
 ##
 # Backup Generated: wcmc_website
 # Once configured, you can run the backup with the following command:
@@ -165,16 +163,16 @@ Model.new(:wcmc_website_db, 'wcmc_website_db') do
 end
 EOF
 
-on roles(:db) do
-  execute "mkdir -p #{fetch(:backup_path)}/models"
-  upload! StringIO.new(backup_config_db), "#{fetch(:backup_path)}/models/db_#{fetch(:application)}.rb"
-   end
- end
+    on roles(:db) do
+      execute "mkdir -p #{fetch(:backup_path)}/models"
+      upload! StringIO.new(backup_config_db), "#{fetch(:backup_path)}/models/db_#{fetch(:application)}.rb"
+    end
+  end
 end
 
 namespace :config do
-task :setup do
-backup_config_files = <<-EOF
+  task :setup do
+  backup_config_files = <<-EOF
 # encoding: utf-8
 # Backup Generated: wcmc_files
 # Once configured, you can run the backup with the following command:
@@ -229,51 +227,47 @@ end
 end
 EOF
 
-
-on roles(:app, :db) do
-   execute "mkdir -p #{fetch(:backup_path)}/models"
-   upload! StringIO.new(backup_config_files), "#{fetch(:backup_path)}/models/files_#{fetch(:application)}.rb"
+    on roles(:app, :db) do
+      execute "mkdir -p #{fetch(:backup_path)}/models"
+      upload! StringIO.new(backup_config_files), "#{fetch(:backup_path)}/models/files_#{fetch(:application)}.rb"
+    end
   end
- end
 end
 
-
 namespace :config do
-task :setup do
- backup_schedule = <<-EOF
+  task :setup do
+    backup_schedule = <<-EOF
 every 1.day, :at => '11:30 pm' do
   command "backup perform -t wcmc_files"
   command "backup perform -t wcmc_website_db"
 end
 EOF
 
-on roles(:app, :db) do
-execute "mkdir -p #{fetch(:backup_path)}/config"
-upload! StringIO.new(backup_schedule), "#{fetch(:backup_path)}/config/#{fetch(:application)}-schedule.rb"
-  end
- end
-end
-
-
-namespace :config do
-task :setup do
-desc "Upload cron schedule file."
-  task :upload_cron do
     on roles(:app, :db) do
       execute "mkdir -p #{fetch(:backup_path)}/config"
-      execute "touch #{fetch(:backup_path)}/config/cron.log"
-      upload! StringIO.new(File.read("config/backup/schedule.rb")), "#{fetch(:backup_path)}/config/schedule.rb"
-   end
+      upload! StringIO.new(backup_schedule), "#{fetch(:backup_path)}/config/#{fetch(:application)}-schedule.rb"
+    end
   end
 end
 
-
+namespace :config do
+  task :setup do
+    desc "Upload cron schedule file."
+    task :upload_cron do
+      on roles(:app, :db) do
+        execute "mkdir -p #{fetch(:backup_path)}/config"
+        execute "touch #{fetch(:backup_path)}/config/cron.log"
+        upload! StringIO.new(File.read("config/backup/schedule.rb")), "#{fetch(:backup_path)}/config/schedule.rb"
+      end
+    end
+  end
+end
 
 namespace :config do
   desc "Update crontab with whenever"
   task :setup do
-   on roles(:app, :db) do
-    execute "cd '#{fetch(:backup_path)}' && /bin/bash -l -c '/home/#{fetch(:deploy_user)}/.rvm/gems/ruby-2.1.3/bin/whenever -f config/#{fetch(:application)}-schedule.rb --update-crontab'"
-   end
+    on roles(:app, :db) do
+      execute "cd '#{fetch(:backup_path)}' && /bin/bash -l -c '/home/#{fetch(:deploy_user)}/.rvm/gems/ruby-2.1.3/bin/whenever -f config/#{fetch(:application)}-schedule.rb --update-crontab'"
+    end
   end
 end
