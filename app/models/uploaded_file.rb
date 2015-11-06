@@ -6,6 +6,7 @@ class UploadedFile < ActiveRecord::Base
 
   has_attached_file :document,
     :storage => :s3,
+    :path => "/documents/:id/original/:filename",
     :s3_credentials => Rails.application.secrets.s3_storage
   validates_attachment_size :document, :less_than => 10.megabytes if :document
   do_not_validate_attachment_file_type :document
