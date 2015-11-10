@@ -3,9 +3,18 @@
 => Translations
   - Locales are maintained with Tolk (https://github.com/tolk/tolk)
 
-=> Servers
-  - Staging: 005
-  - Production: 004
+=> Configuration
+Needs a .env file with the following defined:
+SECRET_KEY_BASE
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+MAILER_ADDRESS_KEY
+MAILER_PORT_KEY
+MAILER_DOMAIN_KEY
+MAILER_USERNAME_KEY
+MAILER_PASSWORD_KEY
+MAILER_ASSET_HOST_KEY
+MAILER_HOST_KEY
 
 => Project for: CITES
 

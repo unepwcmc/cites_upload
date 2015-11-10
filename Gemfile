@@ -1,14 +1,13 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.18'
-gem 'rake', '0.8.7'
+gem 'rails', '3.2.22'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
 gem 'enumerate_it'
-gem 'paperclip', '~> 2.4'
+gem 'paperclip'
 #gem 'aws-s3'
 gem 'aws-sdk'
 gem 'devise'
@@ -29,10 +28,14 @@ gem 'tolk'#, :git => 'git://github.com/panva/tolk.git', :branch => 'master'
 # Use unicorn as the web server
 # gem 'unicorn'
 
-# Deploy with Capistrano
-gem 'capistrano'
-gem 'brightbox'
-gem 'capistrano-ext'
+group :development do
+  gem 'capistrano-rvm',   '~> 0.1', require: false
+  gem 'capistrano', '~> 3.4.0', require: false
+  gem 'capistrano-rails',   '~> 1.1', require: false
+  gem 'capistrano-bundler', '~> 1.1', require: false
+  gem 'capistrano-passenger', '~> 0.1.1', require: false
+end
+
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
@@ -45,5 +48,10 @@ end
 gem 'bootstrap-generators', '~>1.0.1'
 group :development do
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
-  gem 'ruby-debug19'
+  gem 'byebug'
 end
+
+gem 'dotenv-rails'
+gem 'rails-secrets'
+
+gem 'test-unit', '~> 3.1' # annoyingly, rails console won't start without it in staging / production

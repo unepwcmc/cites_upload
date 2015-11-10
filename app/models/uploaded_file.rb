@@ -6,9 +6,10 @@ class UploadedFile < ActiveRecord::Base
 
   has_attached_file :document,
     :storage => :s3,
-    :s3_credentials => "#{Rails.root}/config/s3_storage.yml",
-    :bucket => "cites_uploaded_annual_reports_#{Rails.env}"
+    :path => "/documents/:id/original/:filename",
+    :s3_credentials => Rails.application.secrets.s3_storage
   validates_attachment_size :document, :less_than => 10.megabytes if :document
+  do_not_validate_attachment_file_type :document
   belongs_to :report, :touch => true
 end
 # == Schema Information

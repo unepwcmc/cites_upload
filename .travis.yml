@@ -1,0 +1,10 @@
+language: ruby
+cache: bundler
+bundler_args: --without development production staging
+sudo: false
+rvm:
+  - 1.9.3
+before_script:
+  - bundle exec rake db:create db:schema:load
+script:
+  - bundle exec rake
