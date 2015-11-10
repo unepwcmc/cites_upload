@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:unepwcmc/cites_upload.git'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 
-set :branch, 'LinodeCap3Deploy'
+set :branch, 'master'
 
 set :deploy_user, 'wcmc'
 
