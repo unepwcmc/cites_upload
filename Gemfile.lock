@@ -174,7 +174,7 @@ GEM
     uuidtools (2.1.2)
     warden (1.2.3)
       rack (>= 1.0)
-    will_paginate (3.0.3)
+    will_paginate (3.0.7)
     ya2yaml (0.31)
 
 PLATFORMS
